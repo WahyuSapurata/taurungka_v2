@@ -1,0 +1,38 @@
+
+/* Box shadow start */
+.common-shadow {
+  box-shadow: 0 0 15px 0 hsl(var(--main-two)/.16);
+  &-two {
+    box-shadow: 0px 11px 30px -10px hsl(var(--main-two)/.1);
+  }
+  &-three {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  }
+  &-four {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.12);
+  }
+  &-five {
+    box-shadow: 0 6px 30px 0 #00000012;
+  }
+  &-six {
+    box-shadow: 0 4px 41px 0 rgba(0, 0, 0, 0.05);
+  }
+  &-seven {
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.09);
+  }
+  &-eight {
+    box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.1);
+  }
+  &-nine {
+    box-shadow: 0 16px 50px -4px rgba(12, 12, 13, 0.1);
+  }
+}
+
+.hover-common-shadow {
+  &-eight {
+    &:hover {
+      box-shadow: 0 4px 41px 0 rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+/* Box shadow End */

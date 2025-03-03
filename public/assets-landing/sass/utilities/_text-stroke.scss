@@ -1,0 +1,11 @@
+
+.text-stroke {
+    &-white {
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px #fff;
+    }
+    &-neutral-900 {
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px var(--neutral-900);
+    }
+}

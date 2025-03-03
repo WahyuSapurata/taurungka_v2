@@ -1,0 +1,23 @@
+/* Footer Css Start */
+.hover-arrow {
+    &:hover {
+        padding-inline-start: 1.5rem;
+        &::before {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    &::before {
+        position: absolute;
+        content: "\E128";
+        font-family: 'Phosphor';
+        font-weight: 900;
+        inset-inline-start: 0px;
+        inset-block-start: 50%;
+        transform: translateY(-50%);
+        visibility: hidden;
+        opacity: 0;
+        color: inherit;
+    }
+}
+/* Footer Css End */

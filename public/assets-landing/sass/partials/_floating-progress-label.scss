@@ -1,0 +1,58 @@
+/* Floating Progress css start */
+.progress-container, .progress {
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+  height: 8px;
+  width: 100%;
+}
+
+.progress {
+  background-color: var(--main-600);
+  width: 0;
+  -webkit-transition: 0.8s linear;
+  transition: 0.8s linear;
+  height: calc(100% - 3px);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1px;
+  &.active {
+    width: 0 !important;
+  }
+}
+
+.percentage {
+  background-color: var(--main-600);
+  border-radius: 5px;
+  -webkit-box-shadow: 0 4px 5px #00000033;
+  box-shadow: 0 4px 5px #00000033;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px;
+  position: absolute;
+  bottom: 20px;
+  inset-inline-start: 0;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 40px;
+  text-align: center;
+  -webkit-transition: 0.8s linear;
+  transition: 0.8s linear;
+  &::after {
+    background-color: var(--main-600);
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    -webkit-transform: translateX(-50%) rotate(45deg);
+            transform: translateX(-50%) rotate(45deg);
+    height: 10px;
+    width: 10px;
+    z-index: -1;
+  }
+}
+
+.progress.active, .percentage.active {
+  inset-inline-start: 0 !important;
+}
+/* Floating Progress css end */

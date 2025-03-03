@@ -1,0 +1,45 @@
+/* Project Two masonry layout start */
+.masonry-layout > div {
+    width: 100%;
+    &:nth-child(8n + 1) {
+        @media (min-width: 575px) {
+            width: calc(58.33333333% - 12px);
+        }
+    }
+    &:nth-child(8n + 2) {
+        @media (min-width: 575px) {
+            width: calc(41.66666667% - 12px);
+        }
+    }
+    &:nth-child(8n + 3) {
+        @media (min-width: 575px) {
+            width: calc(41.66666667% - 12px);
+        }
+    }
+    &:nth-child(8n + 4) {
+        @media (min-width: 575px) {
+            width: calc(58.33333333% - 12px);
+        }
+    }
+    &:nth-child(8n + 5) {
+        @media (min-width: 575px) {
+            width: calc(66.66666667% - 12px);
+        }
+    }
+    &:nth-child(8n + 6) {
+        @media (min-width: 575px) {
+            width: calc(33.33333333% - 12px);
+        }
+    }
+    &:nth-child(8n + 7) {
+        @media (min-width: 575px) {
+            width: calc(41.66666667% - 12px);
+        }
+    }
+    &:nth-child(8n + 8) {
+        @media (min-width: 575px) {
+            width: calc(58.33333333% - 12px);
+        }
+    }
+}
+/* Project Two masonry layout End */

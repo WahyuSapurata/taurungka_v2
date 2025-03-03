@@ -1,0 +1,12 @@
+/* Banner Start */
+.banner-item {
+    padding-top: 244px;
+    padding-bottom: 112px;
+    @media (max-width: 1199px) {
+        padding-top: 204px;
+    }
+    @media (max-width: 991px) {
+        padding-top: 160px;
+    }
+}
+/* Banner End */

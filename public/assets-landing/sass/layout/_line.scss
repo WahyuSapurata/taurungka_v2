@@ -1,0 +1,47 @@
+.line {
+    position: relative;
+    &::before {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 74px;
+        background: var(--neutral-300);
+        inset-inline-start: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    &.light-white {
+        &::before {
+            background: rgba(255, 255, 255, 0.21); 
+        }
+    }
+}
+
+
+.line-two {
+    position: relative;
+    &::before {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 91px;
+        background: rgba(86, 86, 87, 0.53);
+        inset-inline-start: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+
+.dashed-line {
+    &::before {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: calc(100% - 140px);
+        border-inline-end: 1px dashed var(--main-600);
+        inset-inline-start: 28px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

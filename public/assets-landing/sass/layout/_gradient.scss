@@ -1,0 +1,16 @@
+/* gradient css start */
+.bg-main-100-gradient {
+    &-one {
+        background: linear-gradient(107.49deg, rgba(223, 17, 25, 0.12) 38.02%, rgba(251, 226, 227, 0.12) 89.08%);
+    }
+    &-two {
+        background: linear-gradient(145.27deg, rgba(223, 17, 25, 0.14) 15.55%, rgba(223, 17, 25, 0) 86.81%);
+    }
+    &-three {
+        background: linear-gradient(145.27deg, rgba(223, 17, 25, 0.14) 15.55%, rgba(223, 17, 25, 0) 86.81%);
+    }
+    &-four {
+        background: linear-gradient(145.27deg, rgba(223, 17, 25, 0.14) 15.55%, rgba(223, 17, 25, 0.0308) 86.81%);
+    }
+}
+/* gradient css end */

@@ -1,0 +1,56 @@
+/* =========================== Accordion Css start ============================= */ 
+.common-accordion {
+    .accordion-item {
+        &:not(:last-child) {
+            margin-block-end:26px;
+        }
+    }
+    .accordion-button { 
+        padding-inline-end: 48px;
+        &::after {
+            background-image: none;
+        }
+        &:focus {
+            box-shadow: none;
+        }
+        &:not(.collapsed) {
+            box-shadow: none;
+            color: var(--main-600);
+            &::after {
+                background-image: none;
+                color: var(--main-600);
+            }
+        }
+        &[aria-expanded="true"] {
+            background: var(--main-600);
+            color: #fff !important;
+        }
+        &[aria-expanded="true"], &[aria-expanded="false"] {
+            &::after {
+                font-family: "Phosphor";
+                font-weight: 600;
+                content: "\E3D4";
+                color: hsl(var(--white));
+                background-color: hsl(var(--white)/.2);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                inset-block-start: 50%;
+                transform: translateY(-50%);
+                border-radius: 4px;
+                inset-inline-end: 10px;
+                height: 32px;
+                width: 38px;
+                text-align: center;
+            }
+        }
+        &[aria-expanded="false"] {
+            &::after {
+                content: "\E32A";
+                color: var(--main-two-600);
+            }
+        }
+    }
+}
+/* ================================= Accordion Css End =========================== */

@@ -1,0 +1,95 @@
+/* width Css Class start */
+@each $property, $value in $spaces {
+  .tw-w-#{$property} {
+    width: $value;
+  }
+}
+
+.tw-w {
+  &-25-px {
+    width: 25px;
+  }
+  &-156-px {
+    width: 156px;
+  }
+}
+
+.min-w {
+  &-max {
+    min-width: max-content;
+  }
+}
+
+.tw-w {
+  &-70-px {
+    width: 70px;
+  }
+  &-75-px {
+    width: 75px;
+  }
+  &-85-px {
+    width: 85px;
+  }
+  &-90-px {
+    width: 90px;
+  }
+  &-95-px {
+    width: 95px;
+  }
+  &-114-px {
+    width: 114px;
+  }
+  &-108-px {
+    width: 108px;
+  }
+  &-140-px {
+    width: 140px;
+  }
+  &-300-px {
+    width: 300px;
+  }
+  &-200-px {
+    width: 120px;
+    @media (min-width: 1200px) {
+      width: 200px;
+    }
+  }
+  &-w-max {
+    width: max-content;
+  }
+}
+
+
+.lg-w {
+  &-50 {
+    @media (min-width: 992px) {
+      width: 50% !important;
+    }
+  }
+  &-40 {
+    @media (min-width: 992px) {
+      width: 40% !important;
+    }
+  }
+  &-45 {
+    @media (min-width: 992px) {
+      width: 45% !important;
+    }
+  }
+  &-55 {
+    @media (min-width: 992px) {
+      width: 55% !important;
+    }
+  }
+  &-60 {
+    @media (min-width: 992px) {
+      width: 60% !important;
+    }
+  }
+}
+.xl-w-50 {
+  @media (min-width: 1200px) {
+    width: 50% !important;
+  }
+}
+/* width Css Class End */

@@ -1,0 +1,206 @@
+/* ================================= Margin Css Start =========================== */
+@each $property, $value in $spaces {
+  .tw-m-#{$property} {
+    margin: var(--size-#{$property});
+  }
+}
+
+@each $property, $value in $spaces {
+  .tw-mx-#{$property} {
+    margin-inline: var(--size-#{$property});
+  }
+}
+
+@each $property, $value in $spaces {
+  .tw-my-#{$property} {
+    margin-block: var(--size-#{$property});
+  }
+}
+
+@each $property, $value in $spaces {
+  .tw-ms-#{$property} {
+    margin-inline-start: var(--size-#{$property});
+  }
+}
+
+@each $property, $value in $spaces {
+  .tw-me-#{$property} {
+    margin-inline-end: var(--size-#{$property});
+  }
+}
+
+@each $property, $value in $spaces {
+  .tw-mt-#{$property} {
+    margin-block-start: var(--size-#{$property});
+  }
+}
+
+@each $property, $value in $spaces {
+  .tw-mb-#{$property} {
+    margin-block-end: var(--size-#{$property});
+  }
+}
+
+.tw {
+  &-mx-32-px {
+    margin-inline: clamp(.75rem, -0.4752rem + 8.9744vw, 2rem);
+  }
+  &-mt {
+    &-134-px {
+      margin-top: 134px;
+    }
+    &-254-px {
+      margin-top: 254px;
+    }
+    &-188-px {
+      margin-top: 188px;
+    }
+    &-300-px {
+      margin-top: 300px;
+    }
+    &-80-px {
+      margin-top: 80px;
+    }
+    &-70-px {
+      margin-top: 70px;
+    }
+  }
+  &-ms {
+    &-auto {
+      margin-inline-start: auto;
+    }
+    &-106-px {
+      margin-inline-start: clamp(1.5rem, -0.4752rem + 8.9744vw, 6.625rem);
+    }
+    &-290-px {
+      margin-inline-start: clamp(2.5rem, -0.4752rem + 8.9744vw, 18.125rem);
+    }
+  }
+  &-me-auto {
+    margin-inline-end: auto;
+  }
+  &-mb {
+    &-100-px {
+      margin-block-end: clamp(2.75rem, -0.4752rem + 8.9744vw, 6.25rem);
+    }
+    &-128-px {
+      margin-block-end: 128px;
+    }
+    &-142-px {
+      margin-block-end: 142px;
+    }
+    &-160-px {
+      margin-block-end: clamp(4rem, -0.4752rem + 8.9744vw, 10rem);
+    }
+    &-180-px {
+      margin-block-end: clamp(4.5rem, -0.4752rem + 8.9744vw, 11.25rem);
+    }
+    &-80-px {
+      margin-bottom: 80px;
+    }
+    &--88-px {
+      margin-bottom: -88px;
+    }
+    &--175-px {
+      margin-bottom: -175px;
+    }
+  }
+  &--me-32-px {
+    margin-inline-end: -32px;
+  }
+  &--me {
+    &-45-px {
+      margin-inline-end: -45px;
+    }
+  }
+  &-me {
+    &-23-percent {
+      margin-inline-end: 23%;
+    }
+    &-96-px {
+      margin-inline-end: clamp(2.75rem, -0.4752rem + 8.9744vw, 6rem);
+    }
+    &-32-px {
+      margin-inline-end: clamp(0.75rem, -2.625rem + 4.5vw, 1.875rem);
+    }
+  }
+  &--mt {
+    &-45-px {
+      margin-block-start: -45px;
+    }
+    &-54-px {
+      margin-block-start: -54px;
+    }
+  }
+  &--ms {
+    &-16-px {
+      margin-inline-start: -16px;
+    }
+    &-54-px {
+      margin-inline-start: -54px;
+    }
+    &-38-px {
+      margin-inline-start: -38px;
+    }
+    &-30-px {
+      margin-inline-start: -30px;
+    }
+  }
+}
+
+.sm-tw-me-96-px {
+  @media (min-width: 576px) {
+    margin-inline-end: clamp(2.75rem, -0.4752rem + 8.9744vw, 6rem);
+  }
+}
+
+
+.my-120 {
+  margin-block-start: 60px;
+  margin-block-end: 60px;
+  @media (min-width: 576px) {
+    margin-block-start: 80px;
+    margin-block-end: 80px;
+  }
+  @media (min-width: 992px) {
+    margin-block-start: 120px;
+    margin-block-end: 120px;
+  }
+}
+.mt-120 {
+    margin-block-start: 60px;
+    @media (min-width: 576px) {
+    margin-block-start: 80px;
+  }
+    @media (min-width: 992px) {
+    margin-block-start: 120px;
+  }
+}
+.mb-120 {
+    margin-block-end: 60px;
+    @media (min-width: 576px) {
+    margin-block-end: 80px;
+  }
+    @media (min-width: 992px) {
+    margin-block-end: 120px;
+  }
+}
+.mt-60 {
+    margin-block-start: 30px;
+    @media (min-width: 576px) {
+    margin-block-start: 40px;
+  }
+    @media (min-width: 992px) {
+    margin-block-start: 60px;
+  }
+}
+  .mb-60 {
+    margin-block-end: 30px;
+    @media (min-width: 576px) {
+    margin-block-end: 40px;
+  }
+    @media (min-width: 992px) {
+    margin-block-end: 60px;
+  }
+}
+/* ================================= Margin Css End =========================== */

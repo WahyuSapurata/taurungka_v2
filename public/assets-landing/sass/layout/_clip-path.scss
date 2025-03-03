@@ -1,0 +1,117 @@
+/* ================================= Clip Path Css start =============================== */
+.header-top-bg {
+    &::before {
+        position: absolute;
+        content: "";
+        width: 13%;
+        height: 100%;
+        inset-inline-end: 0;
+        inset-block-start: 0;
+        background-color: var(--main-600);
+        z-index: -1;
+        @include md-screen {
+            display: none;
+        }
+    }
+}
+.clip-path {
+    &::before {
+        position: absolute;
+        content: "";
+        width: 23%;
+        width: 100%;
+        height: 100%;
+        inset-inline-end: 0;
+        inset-block-start: 0;
+        background-color: var(--main-600);
+        z-index: -1;
+        clip-path: polygon(3% 0%, 100% 1%, 100% 100%, 0% 100%);
+        @include md-screen {
+            display: none;
+        }
+    }
+}
+
+.triangle-shape {
+    clip-path: polygon(0 0, 100% 100%, 100% 100%, 0% 100%);
+}
+
+.rectangle-shape {
+    clip-path: polygon(0 0, 100% 3%, 100% 100%, 0% 100%);
+}
+
+.rectangle-shape-two {
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.clip-path-short {
+    &::before {
+        position: absolute;
+        content: "";
+        width: 26px;
+        height: 35px;
+        inset-inline-end: calc(100% - 1px);
+        inset-block-end: 0;
+        background-color: var(--main-800);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
+    }
+}
+
+.rectangle-shape-three {
+    position: absolute;
+    content: "";
+    width: 35%;
+    height: 100%;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    background-color: var(--main-600);
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.both-clipped {
+    clip-path: polygon(6% 0, 100% 0, 96% 100%, 0% 100%);
+}
+
+.hexagon-right {
+    clip-path: polygon(0 0, 93% 0%, 100% 50%, 93% 100%, 0 100%, 0% 50%);
+}
+
+.triangle-before {
+    &::before {
+        position: absolute;
+        content: "";
+        width: 78px;
+        height: 64px;
+        background-color: inherit;
+        clip-path: polygon(0 0, 100% 0, 0 100%, 0% 100%);
+        inset-block-start: 0;
+        inset-inline-start: 0;
+    }
+}
+
+.triangle-two-before {
+    &::before {
+        position: absolute;
+        content: "";
+        height: 78px;
+        width: 64px;
+        background-color: #ffffff;
+        inset-block-start: -20px;
+        inset-inline-start: 20px;
+        transform: rotate(0deg);
+        z-index: -1;
+        clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0 49%);
+    }
+}
+
+
+.clip-top-left {
+    clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%, 0 8%);
+}
+
+.clip-bottom-right {
+    clip-path: polygon(100% 0, 100% 92%, 84% 100%, 0 100%, 0 0);
+}
+
+
+/* ================================= Clip Path Css End =============================== */

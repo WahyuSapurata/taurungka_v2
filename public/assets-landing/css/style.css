@@ -1,0 +1,36 @@
+.pagination .active>.page-link,
+.page-link.active {
+    background-color: #df1118;
+    color: #fff;
+    border-color: #df1118;
+}
+
+.pagination .page-link {
+    color: #df1118;
+}
+
+.pagination .page-link:focus {
+    box-shadow: none;
+}
+
+#statistik .select2-container {
+    border: 1px solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 8px;
+}
+
+#statistik .select2-container--default .select2-selection--single {
+    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+}
+
+#statistik .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%;
+}
+
+#statistik .selection {
+    width: 100%;
+}

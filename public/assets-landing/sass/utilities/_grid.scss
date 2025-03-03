@@ -1,0 +1,11 @@
+/* grid css start */
+.grid-cols-2 {
+    grid-template-columns: 1fr 1fr;
+}
+
+.xs-grid-cols-2 {
+    @media (min-width: 425px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+/* grid css end */

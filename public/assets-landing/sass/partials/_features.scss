@@ -1,0 +1,18 @@
+/* Features Css Start  */
+.p-80-px {
+    padding: clamp(1.5rem, -10.8339rem + 16.4589vw, 5rem);
+}
+.p-90-px {
+    padding: clamp(1.5rem, -10.8339rem + 16.4589vw, 5.625rem);
+}
+.pb-60-px {
+    padding-bottom: clamp(1.5rem, -2.3077rem + 7.9327vw, 3.75rem);
+}
+
+.features-item-wrapper div:not(:last-child) .features-item {
+    @media (min-width: 992px) {
+        border-inline-end: 1px solid rgba(217, 217, 217, 1);
+    }
+}
+
+/* Features Css End */

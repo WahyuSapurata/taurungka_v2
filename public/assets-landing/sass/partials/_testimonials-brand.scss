@@ -1,0 +1,47 @@
+/* ============================ Testimonials brand section css start ============================ */
+.testimonials-box {
+    padding-block-start: clamp(4.5rem, -5.5rem + 10vw, 6.5rem);
+    padding-block-end: clamp(3rem, -5.5rem + 10vw, 4.5rem);
+    padding-inline: clamp(1.5rem, -5.25rem + 9vw, 3.75rem);
+}
+
+.mask-shape {
+    -webkit-mask-image: url(../images/shapes/quate-shape.png);
+    mask-image: url(../images/shapes/quate-shape.png);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-height: 240px;
+    margin: 0 auto;
+    &.style-two {
+        -webkit-mask-image: url(../images/shapes/quate-shape-two.png);
+        mask-image: url(../images/shapes/quate-shape-two.png);
+        max-height: 486px;
+    }
+}
+
+.swiper-3d .swiper-slide-shadow {
+    background: transparent;
+}
+
+
+.bg-bg-color {
+    background-color: #F5F6F8 !important;
+}
+.left-right-line {
+    &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px solid var(--neutral-200);
+        z-index: -1;
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+        inset-block-start: 50%;
+        transform: translateY(-50%);
+    }
+}
+/* ============================ Testimonials brand section css End ============================ */

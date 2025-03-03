@@ -1,0 +1,41 @@
+/* Banner Three Css Start */
+.banner-three {
+    padding: 360px 0;
+    @media (max-width: 991px) {
+        padding: 340px 0;
+    }
+    @media (max-width: 768px) {
+        padding: 300px 0;
+    }
+    @media (max-width: 600px) {
+        padding: 240px 0;
+    }
+    @media (max-width: 575px) {
+        padding: 220px 0;
+    }
+    @media (max-width: 400px) {
+        padding: 180px 0;
+    }
+}
+
+.before-bg-main-600 {
+    z-index: 1;
+    &::before {
+        position: absolute;
+        content: "";
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        background-color: var(--main-600);
+        inset-block-start: 30px;
+        z-index: -1;
+    }
+}
+
+.curve-road {
+    display: none;
+    @media (min-width: 1800px) {
+        display: block;
+    }
+}
+/* Banner Three Css End */

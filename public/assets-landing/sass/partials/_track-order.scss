@@ -1,0 +1,31 @@
+/* track order css start */
+.track-order {
+    @media (max-width: 1299px) {
+        background-color: var(--main-two-600);
+        padding-block: 16px;
+    }
+}
+
+.d-1300-px-block {
+    @media (min-width: 1300px) {
+        display: block !important;
+    }
+}
+
+.track-order-bg {
+    display: none;
+    width: 78%;
+    @media (max-width: 1700px) {
+        width: 82%;
+    }
+    @media (max-width: 1500px) {
+        width: 88%;
+    }
+    @media (max-width: 1400px) {
+        width: 82%;
+    }
+    @media (min-width: 1300px) {
+        display: block;
+    }
+}
+/* track order css end */

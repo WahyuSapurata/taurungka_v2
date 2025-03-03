@@ -1,0 +1,159 @@
+/* ============= Header Start Here ======================= */
+.header {
+    @include md-screen {
+        padding: 10px 0;
+    }
+    &.fixed-header {
+        position: sticky;
+        inset-inline-start: 0;
+        inset-block-start: 0;
+        inset-inline-end: 0;
+        width: 100%;
+        z-index: 99;
+        backdrop-filter: blur(24px);
+        animation: slideDown 0.6s ease-out;    
+        box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+        @include md-screen {
+            inset-block-start: -1px;
+        }
+    }
+}
+.absolute-headers {
+    &.fixed-header {
+        position: fixed !important;
+        box-shadow: none;
+        backdrop-filter: none;
+        .top-header-two, .top-header-three {
+            display: none !important;
+        }
+        .header-middle {
+            display: none;
+        }
+        .header-two__nav {
+            background-color: var(--main-two-600) !important;
+        }
+    }
+}
+
+@keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+
+.header-inner {
+    @media (min-width: 992px) {
+        margin-bottom: -51px;
+        z-index: 3;
+        position: relative;
+    }
+}
+
+
+/* Header Menu and Submenu Css Start */
+.nav-menu {
+    &__item {
+        &.activePage {
+            > a {
+                color: var(--main-600) !important;
+                &::before {
+                    color: var(--main-600);
+                }
+            }
+        }
+        &:hover {
+            > a {
+                color: hsl(var(--heading-color));
+                @media (min-width: 992px) {
+                    color: var(--main-600);
+                }
+            }
+        }
+    }
+}
+
+.has-submenu {
+    &.active {
+        > a, > a::before{
+            color: var(--main-600);
+        }
+        > a::before {
+            transform: translateY(-50%) rotate(180deg) !important; 
+        }
+    }
+    &:hover {
+        .nav-submenu {
+            visibility: visible;
+            opacity: 1;
+            margin-block-start: 0;
+        }
+        > a {
+            &::before {
+                @media (min-width: 992px) {
+                    color: var(--main-600);
+                    transform: translateY(-50%) rotate(180deg);
+                }
+            }
+        }
+    }
+    > a {
+        position: relative;
+        &::before {
+            position: absolute;
+            content: "\E03E";
+            font-size: 10px;
+            inset-inline-end: 0;
+            inset-block-start: 50%;
+            transform: translateY(-50%);
+            font-family: 'Phosphor';
+            font-weight: 900;
+            color: var(--main-600);
+            transition: .2s linear;
+        }
+    }
+}
+
+/* Submenu Start */
+.nav-submenu {
+    box-shadow: 0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a;
+    min-width: 190px;
+    visibility: hidden;
+    opacity: 0;
+    @media (min-width: 992px) {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    &__item {
+        &.activePage {
+            .nav-submenu {
+                &__link {
+                    color: var(--main-600) !important;
+                }
+            }
+        }
+        &:hover {
+            a {
+                color: hsl(var(--heading-color));
+            }
+        }
+    }
+}
+/* Submenu End */
+
+.links-white {
+    color: #fff;
+    .nav-menu__link {
+        color: #fff;
+    }
+}
+
+.md-bg-main-two-600 {
+    @media (max-width: 991px) {
+        background-color: var(--main-two-600);
+    }
+}
+/* Header Menu and Submenu Css End */
+/* ================================= Header Css End =========================== */

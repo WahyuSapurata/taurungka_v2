@@ -1,0 +1,17 @@
+/* Service Three section css start */
+.service-three-item {
+    &:hover {
+        .service-three-item {
+            &__content {
+               max-height: 300px; 
+            }
+        }
+        .d-none {
+            display: block !important;
+        }
+    }
+    &__content {
+        max-height: 103px;
+    }
+}
+/* Service Three section css End */

@@ -1,0 +1,155 @@
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0;
+}
+
+/* Pagination Style one */
+.pagination-style-one {
+    .swiper-pagination {
+        position: absolute;
+        text-align: start;
+        inset-inline-start: 0;
+        bottom: 0 !important;
+        display: flex;
+        &-bullet {
+            padding: 24px 32px;
+            padding-inline-end: 60px;
+            border-radius: 0;
+            width: auto;
+            height: 100%;
+            font-size: 18px;
+            opacity: 1;
+            max-width: 178px;
+            background-color: transparent;
+            color: #fff;
+            position: relative;
+            transition: .3s linear;
+            @media (max-width: 767px) {
+                padding: 24px;
+            }
+            @media (max-width: 575px) {
+                padding: 20px 16px;
+                font-size: 14px;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 1;
+            }
+            &::before {
+                width: 15px;
+                height: 15px;
+                inset-block-start: 10px;
+                inset-inline-end: 10px;
+                border-radius: 50%;
+            }
+            &::after {
+                width: 26px;
+                height: 30px;
+                inset-block-start: 4px;
+                inset-inline-start: 4px;
+                clip-path: polygon(0 0, 100% 0, 0 100%, 0% 100%);
+            }
+            &::before, &::after {
+                position: absolute;
+                content: "";
+                background-color: var(--main-600);
+                visibility: hidden;
+                opacity: 0;
+                transition: .2s linear;
+                transform: scale(0);
+            }
+            &-active {
+                background: #ffffff0a;
+                &::before, &::after {
+                    transition-delay: .2s;
+                    visibility: visible;
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                &::before {
+                    transition-delay: .35s;
+                }
+            }
+        }
+    }
+}
+/* Pagination Style one */
+
+/* Pagination Style Two */
+.pagination-style-two {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    .swiper-pagination {
+        position: absolute;
+        text-align: start;
+        inset-inline-start: 0;
+        bottom: 0 !important;
+        display: flex;
+        &-bullet {
+            padding: 24px 32px;
+            padding-inline-end: 60px;
+            border-radius: 0;
+            width: auto;
+            height: 100%;
+            font-size: 18px;
+            opacity: 1;
+            max-width: 178px;
+            background: rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            position: relative;
+            transition: .3s linear;
+            position: relative;
+            text-align: start;
+            padding-inline-start: 48px !important;
+            padding-inline-end: 24px !important;
+            &::before {
+                position: absolute;
+                content: "";
+                width: 10px;
+                height: 10px;
+                inset-inline-start: 22px;
+                border-radius: 50%;
+                inset-block-start: 50%;
+                transform: var(--translate-y-50);
+                background: rgba(255, 255, 255, 0.36);
+
+            }
+            &-active {
+                background: var(--main-600);
+                &::before, &::after {
+                    transition-delay: .2s;
+                    visibility: visible;
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                &::before {
+                    transition-delay: .35s;
+                }
+            }
+        }
+    }
+}
+/* Pagination Style two */
+
+.banner-slider .swiper-slide {
+    height: unset;
+    display: flex;
+    flex-direction: column;
+}
+
+.swiper-notification {
+    display: none;
+}
+
+.scale-bg {
+    transition: 30s ease-out;
+}
+.swiper-slide.swiper-slide-active .scale-bg{
+    transform: scale(1.2);
+}
+
+.swiper-slide-next .testimonials-two__content {
+    border-color: var(--main-600) !important;
+}

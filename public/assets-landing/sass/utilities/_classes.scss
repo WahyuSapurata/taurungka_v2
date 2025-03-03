@@ -1,0 +1,33 @@
+
+/* ================================= Classes Css Start =========================== */
+.col-xs-6 {
+    @media screen and (min-width: 425px) and (max-width: 575px) {
+        width: 50%;
+    }
+}
+
+
+.xs-d-block {
+    @media (min-width: 425px) {
+        display: block !important;
+    }
+}
+
+.xxsm-d-block {
+    @media (min-width: 360px) {
+        display: block !important;
+    }
+}
+
+.tw-leading {
+    &-none {
+        line-height: 1;
+    }
+    &-loose {
+        line-height: 2;
+    }
+    &-18 {
+        line-height: 1.8;
+    }
+}
+/* ================================= Classes Css End =========================== */

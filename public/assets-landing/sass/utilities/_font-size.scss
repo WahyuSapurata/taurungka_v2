@@ -1,0 +1,51 @@
+/* Font Size Class Start */
+.text {
+  &-inherit {
+      font-size: inherit;
+  }
+}
+
+@each $property, $value in $font-sizes {
+  .tw-text-#{$property} {
+    font-size: $value;
+  }
+}  
+/* Font Size Class End */
+
+
+@each $property, $value in $spaces {
+    .tw-text-#{$property} {
+      font-size: $value;
+    }
+}  
+
+.tw-text {
+  &-44-px {
+    font-size: clamp(1.75rem, -1.1434rem + 6.5574vw, 2.5rem); /* min: 28px max: 40px */
+  }
+  &-56-px {
+    font-size: clamp(2rem, -1.1434rem + 6.5574vw, 3.5rem); /* min: 32px max:3.5px */
+  }
+  &-80-px {
+    font-size: clamp(2rem, -1.1434rem + 6.5574vw, 5rem); /* min: 32px max:80px */
+  }
+  &-150-px {
+    font-size: clamp(2.5rem, -3.8351rem + 17.6282vw, 9.375rem); /* min: 40px max:150px */
+  }
+  &-110-px {
+    font-size: clamp(2.5rem, -3.8351rem + 17.6282vw, 6.875rem); /* min: 40px max:110px */
+  }
+}
+
+@media (min-width: 1200px) {
+  .xl-tw-text-sm {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .xl-tw-text-3xl {
+    font-size: 1.25rem;
+  }
+}
+/* Font Size Class End */

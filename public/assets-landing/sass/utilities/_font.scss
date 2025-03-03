@@ -1,0 +1,14 @@
+.font {
+    &-heading {
+        font-family: var(--heading-font);
+    }
+    &-body {
+        font-family: var(--body-font);
+    }
+    &-pacifico {
+        font-family: var(--pacifico-font);
+    }
+    &-carter {
+        font-family: var(--carter-font);
+    }
+}

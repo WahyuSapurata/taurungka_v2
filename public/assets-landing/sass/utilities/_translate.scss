@@ -1,0 +1,119 @@
+/*================================== Translate Css Start ==================================*/
+/* Translate X */
+.tw-translate-x {
+    &-full {
+        transform: translateX(100%);
+    }
+    &-32-px {
+        transform: translateX(32px);
+    }
+}
+
+.tw--translate-middle {
+    transform: var(--translate-x-50) var(--translate-y-50);
+}
+
+.tw--translate-x {
+    &-30-px {
+        transform: translateX(-30px);
+    }
+    &-48-px {
+        transform: translateX(-48px);
+    }
+    &-50 {
+        transform: var(--translate-x-50);
+    }
+    &-full {
+        transform: translateX(-100%);
+    }
+}
+
+/* Translate Y */
+.tw--translate-y {
+    &-4-px {
+        transform: translateY(-4px);
+    }
+ 
+    &-36-px {
+        transform: translateY(-36px);
+    }
+    &-50 {
+        transform: var(--translate-y-50);
+    }
+}
+.tw-translate-y {
+    &-35-px {
+        transform: translateY(35px);
+    }
+    &-44-px {
+        transform: translateY(44px);
+    }
+    &-44-px {
+        transform: translateY(44px);
+    }
+    &-45-px {
+        transform: translateY(45px);
+    }
+    &-76-px {
+        @media (min-width: 1200px) {
+            transform: translateY(76px);
+        }
+    }
+}
+
+.hover--translate-y {
+    &-05 {
+        &:hover {
+            transform: translateY(-2px);
+        }
+    }
+    &-1 {
+        &:hover {
+            transform: translateY(-4px);
+        }
+    }
+    &-2 {
+        &:hover {
+            transform: translateY(-8px);
+        }
+    }
+}
+
+.active--translate-y {
+    &-05 {
+        &:active {
+            transform: translateY(-2px);
+        }
+    }
+    &-1 {
+        &:active {
+            transform: translateY(-4px);
+        }
+    }
+    &-2 {
+        &:active {
+            transform: translateY(-8px);
+        }
+    }
+}
+
+
+/* Translate X */
+.hover--translate-x {
+    &-05 {
+        &:hover {
+            transform: translateX(-2px);
+        }
+    }
+    &-1 {
+        &:hover {
+            transform: translateX(-4px);
+        }
+    }
+    &-2 {
+        &:hover {
+            transform: translateX(-8px);
+        }
+    }
+}
+/*================================== Translate Css End  ==================================*/

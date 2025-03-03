@@ -1,0 +1,37 @@
+/* Gap Css start */
+@each $property, $value in $spaces {
+    .tw-gap-#{$property} {
+      gap: var(--size-#{$property});
+    }
+  }
+/* Gap Css end */
+
+@media (min-width: 1200px) {
+  .xl-tw-gap-12 {
+      gap: 3rem;
+  }
+  .xl-tw-gap-9 {
+      gap: 2.25rem;
+  }
+}
+
+.tw-gap {
+  &-36-px {
+    gap: clamp(0.75rem, -4.48rem + 7.98vw, 2.25rem);
+  }
+  &-40-px {
+    gap: clamp(1rem, -4.48rem + 7.98vw, 2.5rem);
+  }
+  &-56-px {
+    gap: clamp(1.5rem, -4.48rem + 7.98vw, 3.5rem);
+  }
+  &-64-px {
+    gap: clamp(1.5rem, -4.48rem + 7.98vw, 4rem);
+  }
+  &-74-px {
+    gap: clamp(1.5rem, -4.48rem + 7.98vw, 4.625rem);
+  }
+  &-176-px {
+    gap: clamp(3.5rem, -4.48rem + 7.98vw, 11rem);
+  }
+}

@@ -1,0 +1,35 @@
+/* About Three Css Start */
+.writing-mode {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}
+
+.before-circle {
+    &::before {
+        position: absolute;
+        content: "";
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        inset-block-end: 0;
+        inset-inline-end: 0;
+        background-color: hsl(var(--main)/.2);
+        z-index: -1;
+    }
+}
+
+.half-gradient-white {
+    &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        inset-inline-start: 0;
+        inset-block-start: 0;
+        background: linear-gradient(360deg, blue 20%, green 80%);
+        background: linear-gradient(335deg, white 70%, #ffffff00 50%);
+        z-index: -1;
+        filter: drop-shadow(2px 4px 6px #00000026);
+    }
+}
+/* About Three Css End */

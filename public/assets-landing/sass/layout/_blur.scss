@@ -1,0 +1,24 @@
+/* blur Css start */
+.bg-blur {
+    &-one {
+        background-color: #222a2c4a;
+        backdrop-filter: blur(10px);
+    }
+    &-two {
+        background-color:rgba(255, 255, 255, 0.44);
+        backdrop-filter: blur(40px);
+    }
+    &-three {
+        background: rgba(0, 0, 0, 0.23);
+        backdrop-filter: blur(35px)
+    }
+    &-four {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(35px)
+    }
+    &-five {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(18px)
+    }
+}
+/* blur Css End */
