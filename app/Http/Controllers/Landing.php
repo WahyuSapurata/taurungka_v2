@@ -60,7 +60,8 @@ class Landing extends BaseController
                 'events.status_daftar',
                 'events.dukumen',
                 'events.banner',
-                'events.created_at'
+                'events.created_at',
+                'events.updated_at'
             )
             ->orderByDesc('total_view')
             ->take(4)
@@ -104,7 +105,8 @@ class Landing extends BaseController
                 'events.status_daftar',
                 'events.dukumen',
                 'events.banner',
-                'events.created_at'
+                'events.created_at',
+                'events.updated_at'
             )
             ->orderByDesc('total_view')
             ->take(4)
@@ -161,7 +163,8 @@ class Landing extends BaseController
                 'events.status_daftar',
                 'events.dukumen',
                 'events.banner',
-                'events.created_at'
+                'events.created_at',
+                'events.updated_at'
             )
             ->orderByDesc('total_view')
             ->take(4)
