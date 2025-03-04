@@ -10,6 +10,7 @@ use App\Models\Pendaftar;
 use App\Models\User;
 use App\Models\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Landing extends BaseController
 {
@@ -45,10 +46,9 @@ class Landing extends BaseController
                 return $event;
             });
 
-        $event_populer = Event::select('events.*')
+        $event_populer = Event::select(DB::raw('events.*, COUNT(views.id) as total_view'))
             ->leftJoin('views', 'events.uuid', '=', 'views.uuid_posting')
-            ->selectRaw('COUNT(views.id) as total_view')
-            ->groupBy('events.id', 'events.uuid', 'events.nama_event', 'events.tanggal', 'events.lokasi') // Sesuaikan dengan semua kolom di tabel events
+            ->groupBy('events.id')
             ->orderByDesc('total_view')
             ->take(4)
             ->get();
@@ -77,10 +77,9 @@ class Landing extends BaseController
                 return $event;
             });
 
-        $event_populer = Event::select('events.*')
+        $event_populer = Event::select(DB::raw('events.*, COUNT(views.id) as total_view'))
             ->leftJoin('views', 'events.uuid', '=', 'views.uuid_posting')
-            ->selectRaw('COUNT(views.id) as total_view')
-            ->groupBy('events.id', 'events.uuid', 'events.nama_event', 'events.tanggal', 'events.lokasi') // Sesuaikan dengan semua kolom di tabel events
+            ->groupBy('events.id')
             ->orderByDesc('total_view')
             ->take(4)
             ->get();
@@ -122,10 +121,9 @@ class Landing extends BaseController
                 return $event;
             });
 
-        $event_populer = Event::select('events.*')
+        $event_populer = Event::select(DB::raw('events.*, COUNT(views.id) as total_view'))
             ->leftJoin('views', 'events.uuid', '=', 'views.uuid_posting')
-            ->selectRaw('COUNT(views.id) as total_view')
-            ->groupBy('events.id', 'events.uuid', 'events.nama_event', 'events.tanggal', 'events.lokasi') // Sesuaikan dengan semua kolom di tabel events
+            ->groupBy('events.id')
             ->orderByDesc('total_view')
             ->take(4)
             ->get();
