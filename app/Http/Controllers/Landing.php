@@ -48,7 +48,19 @@ class Landing extends BaseController
 
         $event_populer = Event::select(DB::raw('events.*, COUNT(views.id) as total_view'))
             ->leftJoin('views', 'events.uuid', '=', 'views.uuid_posting')
-            ->groupBy('events.id')
+            ->groupBy(
+                'events.id',
+                'events.uuid',
+                'events.uuid_user',
+                'events.nama_event',
+                'events.tanggal_event',
+                'events.kouta_kegiatan',
+                'events.konten_kegiatan',
+                'events.tempat',
+                'events.status_daftar',
+                'events.dukumen',
+                'events.banner'
+            )
             ->orderByDesc('total_view')
             ->take(4)
             ->get();
@@ -79,7 +91,19 @@ class Landing extends BaseController
 
         $event_populer = Event::select(DB::raw('events.*, COUNT(views.id) as total_view'))
             ->leftJoin('views', 'events.uuid', '=', 'views.uuid_posting')
-            ->groupBy('events.id')
+            ->groupBy(
+                'events.id',
+                'events.uuid',
+                'events.uuid_user',
+                'events.nama_event',
+                'events.tanggal_event',
+                'events.kouta_kegiatan',
+                'events.konten_kegiatan',
+                'events.tempat',
+                'events.status_daftar',
+                'events.dukumen',
+                'events.banner'
+            )
             ->orderByDesc('total_view')
             ->take(4)
             ->get();
@@ -123,7 +147,19 @@ class Landing extends BaseController
 
         $event_populer = Event::select(DB::raw('events.*, COUNT(views.id) as total_view'))
             ->leftJoin('views', 'events.uuid', '=', 'views.uuid_posting')
-            ->groupBy('events.id')
+            ->groupBy(
+                'events.id',
+                'events.uuid',
+                'events.uuid_user',
+                'events.nama_event',
+                'events.tanggal_event',
+                'events.kouta_kegiatan',
+                'events.konten_kegiatan',
+                'events.tempat',
+                'events.status_daftar',
+                'events.dukumen',
+                'events.banner'
+            )
             ->orderByDesc('total_view')
             ->take(4)
             ->get();
