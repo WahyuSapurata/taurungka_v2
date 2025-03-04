@@ -48,10 +48,11 @@ class Landing extends BaseController
         $event_populer = Event::select('events.*')
             ->leftJoin('views', 'events.uuid', '=', 'views.uuid_posting')
             ->selectRaw('COUNT(views.id) as total_view')
-            ->groupBy('events.id')
-            ->orderByDesc('total_view') // Urutkan berdasarkan jumlah view terbanyak
-            ->take(4) // Ambil 4 event dengan view terbanyak
+            ->groupBy('events.id', 'events.uuid', 'events.nama_event', 'events.tanggal', 'events.lokasi') // Sesuaikan dengan semua kolom di tabel events
+            ->orderByDesc('total_view')
+            ->take(4)
             ->get();
+
         return view('landing.event.index', compact('module', 'event', 'event_terbaru', 'event_populer'));
     }
 
