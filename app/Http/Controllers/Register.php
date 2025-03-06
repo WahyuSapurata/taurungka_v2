@@ -22,6 +22,7 @@ class Register extends BaseController
             $data->name = $registerRequest->name;
             $data->username = $registerRequest->username;
             $data->password = $registerRequest->password;
+            $data->current_password = $registerRequest->password;
             $data->nik = $registerRequest->nik;
             $data->no_kk = $registerRequest->no_kk;
             $data->no_hp = $registerRequest->no_hp;
@@ -46,9 +47,4 @@ class Register extends BaseController
         }
         return $this->sendResponse($data, 'Register user success');
     }
-
-    // public function check_in()
-    // {
-    //     return
-    // }
 }

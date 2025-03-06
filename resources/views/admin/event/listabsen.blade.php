@@ -90,23 +90,55 @@
                 processing: true,
                 ajax: '/admin/get-list-absen/' + lastPart,
                 columns: [{
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
+                        data: null,
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    }, {
+                        data: 'nama',
+                    }, {
+                        data: 'masuk',
+                        render: function(data, type, row) {
+                            // Jika data masuk true, tampilkan pesan "Telah absen" beserta waktu created_at yang diformat
+                            if (data) {
+                                const createdAt = new Date(row.created_at).toLocaleString('id-ID', {
+                                    timeZone: 'Asia/Makassar', // Sesuaikan dengan timezone lokal
+                                    weekday: 'long', // Nama hari (opsional)
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    second: '2-digit'
+                                });
+                                return 'Telah absen pada ' + createdAt;
+                            } else {
+                                return 'Belum absen';
+                            }
+                        }
+                    },
+                    {
+                        data: 'pulang',
+                        render: function(data, type, row) {
+                            // Jika data pulang true, tampilkan pesan "Telah absen" beserta waktu updated_at yang diformat
+                            if (data) {
+                                const updatedAt = new Date(row.updated_at).toLocaleString('id-ID', {
+                                    timeZone: 'Asia/Makassar', // Sesuaikan dengan timezone lokal
+                                    weekday: 'long', // Nama hari (opsional)
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    second: '2-digit'
+                                });
+                                return 'Telah absen pada ' + updatedAt;
+                            } else {
+                                return 'Belum absen';
+                            }
+                        }
                     }
-                }, {
-                    data: 'nama',
-                }, {
-                    data: 'masuk',
-                    render: function(data, type, row) {
-                        return data ? 'Telah absen' : 'Belum absen'
-                    }
-                }, {
-                    data: 'pulang',
-                    render: function(data, type, row) {
-                        return data ? 'Telah absen' : 'Belum absen'
-                    }
-                }],
+                ],
                 rowCallback: function(row, data, index) {
                     var api = this.api();
                     var startIndex = api.context[0]._iDisplayStart;

@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'username',
         'password',
+        'current_password',
         'role',
 
         'nik',

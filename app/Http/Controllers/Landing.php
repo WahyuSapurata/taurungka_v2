@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Landing extends BaseController
 {
@@ -202,8 +203,10 @@ class Landing extends BaseController
             $data_absen->uuid_event = $params;
             $data_absen->masuk = true;
             $data_absen->pulang = false;
+            $data_absen->created_at = Carbon::now('Asia/Makassar');
         } elseif ($request->type === 'checkout' && !$data_absen->pulang) {
             $data_absen->pulang = true;
+            $data_absen->updated_at = Carbon::now('Asia/Makassar');
         }
 
         $data_absen->save();

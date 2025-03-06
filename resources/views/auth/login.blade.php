@@ -305,8 +305,16 @@
 
                                                     <div class="mb-10">
                                                         <label class="form-label">Pedidikan Terakhir</label>
-                                                        <input type="text" id="pedidikan_terakhir"
-                                                            class="form-control" name="pedidikan_terakhir">
+                                                        <select name="pedidikan_terakhir" class="form-select"
+                                                            id="pedidikan_terakhir">
+                                                            <option value="">-- Pilih --</option>
+                                                            <option value="SD">SD</option>
+                                                            <option value="SMP Sederajat">SMP Sederajat</option>
+                                                            <option value="SMA Sederajat">SMA Sederajat</option>
+                                                            <option value="S1">S1</option>
+                                                            <option value="S2">S2</option>
+                                                            <option value="S3">S3</option>
+                                                        </select>
                                                         <small class="text-danger pedidikan_terakhir_error"></small>
                                                     </div>
 

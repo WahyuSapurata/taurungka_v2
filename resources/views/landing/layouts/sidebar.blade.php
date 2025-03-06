@@ -64,17 +64,32 @@
                     <a href="{{ route('tentang') }}"
                         class="nav-menu__link hover--translate-y-1 text-main-two-600 tw-py-9 fw-medium w-100">Tentang</a>
                 </li>
-                <li class="nav-menu__item">
-                    <a href="{{ route('login.login-akun') }}"
-                        class="cursor-small btn btn-main hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
-                        data-block="button">
-                        <span class="button__flair"></span>
-                        <span class="button__label">Daftar/Masuk</span>
-                        <span
-                            class="tw-w-7 tw-h-7 bg-white text-main-600 tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
-                            <i class="ph-bold ph-check"></i>
-                        </span>
-                    </a>
+                <li class="nav-menu__item mt-3">
+                    @if (auth()->check())
+                        <div class="d-flex tw-gap-11 flex-wrap">
+                            <a href="{{ route('logout') }}"
+                                class="cursor-small btn btn-main hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
+                                data-block="button">
+                                <span class="button__flair"></span>
+                                <span class="button__label">Logout</span>
+                                <span
+                                    class="tw-w-7 tw-h-7 bg-white text-main-600 tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
+                                    <i class="ph-bold ph-sign-out"></i>
+                                </span>
+                            </a>
+                        </div>
+                    @else
+                        <a href="{{ route('login.login-akun') }}"
+                            class="cursor-small btn btn-main hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
+                            data-block="button">
+                            <span class="button__flair"></span>
+                            <span class="button__label">Daftar/Masuk</span>
+                            <span
+                                class="tw-w-7 tw-h-7 bg-white text-main-600 tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
+                                <i class="ph-bold ph-check"></i>
+                            </span>
+                        </a>
+                    @endif
                 </li>
             </ul>
             <!-- Nav menu End  -->

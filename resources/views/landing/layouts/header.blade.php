@@ -119,6 +119,20 @@
             <!-- Header Right start -->
             <div class="d-flex gap-xxl-5 gap-3">
                 <div class="d-flex align-items-center xl-tw-gap-7 tw-gap-6 flex-shrink-0">
+                    @if (auth()->check())
+                        <div class="d-flex tw-gap-11 flex-wrap d-lg-block d-none">
+                            <a href="{{ route('logout') }}"
+                                class="cursor-small btn btn-main hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
+                                data-block="button">
+                                <span class="button__flair"></span>
+                                <span class="button__label">Logout</span>
+                                <span
+                                    class="tw-w-7 tw-h-7 bg-white text-main-600 tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
+                                    <i class="ph-bold ph-sign-out"></i>
+                                </span>
+                            </a>
+                        </div>
+                    @endif
 
                     <!-- Line Start -->
                     <span class="line h-100"></span>
@@ -130,11 +144,13 @@
                         @endphp
 
                         <div class="rounded-circle overflow-hidden d-none d-lg-flex" style="width: 95px; height: 95px;">
-                            <img src="{{ $fotoPath }}" alt="Foto Profil" class="w-100 h-100 object-fit-cover">
+                            <img src="{{ auth()->user()->foto ? $fotoPath : 'assets/media/svg/avatars/blank.svg' }}"
+                                alt="Foto Profil" class="w-100 h-100 object-fit-cover">
                         </div>
 
                         <div class="rounded-circle overflow-hidden d-lg-none d-flex" style="width: 55px; height: 55px;">
-                            <img src="{{ $fotoPath }}" alt="Foto Profil" class="w-100 h-100 object-fit-cover">
+                            <img src="{{ auth()->user()->foto ? $fotoPath : 'assets/media/svg/avatars/blank.svg' }}"
+                                alt="Foto Profil" class="w-100 h-100 object-fit-cover">
                         </div>
                     @else
                         <div class="d-flex tw-gap-11 flex-wrap d-lg-block d-none">

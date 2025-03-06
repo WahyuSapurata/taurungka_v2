@@ -51,6 +51,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::get('/user', 'DataUser@index')->name('user');
         Route::get('/get-user', 'DataUser@get')->name('get-user');
+        Route::get('/add-user', 'DataUser@add')->name('add-user');
+        Route::post('/store-user', 'DataUser@store')->name('store-user');
+        Route::get('/edit-user/{params}', 'DataUser@edit')->name('edit-user');
+        Route::post('/update-user/{params}', 'DataUser@update')->name('update-user');
+        Route::delete('/delete-user/{params}', 'DataUser@delete')->name('delete-user');
 
         Route::get('/event', 'EventController@index')->name('event');
         Route::get('/get-event', 'EventController@get')->name('get-event');
