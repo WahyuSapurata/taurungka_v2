@@ -74,6 +74,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/list-absen/{params}', 'EventController@list_absen')->name('list-absen');
         Route::get('/get-list-absen/{params}', 'EventController@get_list_absen')->name('get-list-absen');
 
+        Route::get('/export-pendaftar/{params}', 'EventController@export_excel_pendaftar')->name('export-pendaftar');
+        Route::get('/export-absen/{params}', 'EventController@export_excel_absen')->name('export-absen');
+
         Route::get('/daftarmakassar', 'DataMakassarController@index')->name('daftarmakassar');
         Route::get('/get-daftarmakassar', 'DataMakassarController@get')->name('get-daftarmakassar');
         Route::get('/add-daftarmakassar', 'DataMakassarController@add')->name('add-daftarmakassar');

@@ -10,6 +10,10 @@ use App\Models\Pendaftar;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Carbon\Carbon;
 
 class EventController extends BaseController
 {
@@ -213,5 +217,306 @@ class EventController extends BaseController
             return $item;
         });
         return $this->sendResponse($data, 'Get data success');
+    }
+
+    public function export_excel_pendaftar($params)
+    {
+        $data = Pendaftar::where('uuid_event', $params)->get();
+        $data->map(function ($item) {
+            $user = User::where('uuid', $item->uuid_user)->first();
+
+            $item->nama = $user->name;
+            $item->kecamatan = $user->kecamatan;
+            $item->kelurahan = $user->kelurahan;
+            $item->jenis_kelamin = $user->jenis_kelamin;
+            $item->umur = $user->usia;
+            $item->no_telp = $user->no_hp;
+
+            return $item;
+        });
+
+        $data_event = Event::where('uuid', $params)->first();
+
+        // Buat objek Spreadsheet
+        $spreadsheet = new Spreadsheet();
+
+        // Ambil objek aktif (sheet aktif)
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+        $sheet->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_FOLIO);
+        $sheet->getRowDimension(1)->setRowHeight(30);
+        $spreadsheet->getDefaultStyle()->getFont()->setName('Times New Roman');
+        $fontStyle = [
+            'font' => [
+                'name' => 'Times New Roman',
+                'size' => 12,
+            ],
+        ];
+
+        // Isi data ke dalam sheet
+        $centerStyle = [
+            'alignment' => [
+                //'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ];
+        $sheet->setCellValue('A1', 'REKAP PENDAFTAR EVENT')->mergeCells('A1:C1');
+        $sheet->setCellValue('A2', $data_event->nama_event)->mergeCells('A2:C2');
+
+        $sheet->setCellValue('A3', 'No');
+        $sheet->setCellValue('B3', 'Nama');
+        $sheet->setCellValue('C3', 'Keterangan');
+
+        // Memberikan warna pada sel-sel baris ke-3
+        $sheet->getStyle('A3:C3')->applyFromArray([
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'startColor' => [
+                    'rgb' => 'acb9ca', // Warna Peach
+                ],
+            ],
+        ]);
+
+        $row = 4;
+
+        foreach ($data as $index => $lap) {
+            $sheet->setCellValue('A' . $row, $index + 1);
+            $sheet->setCellValue('B' . $row, $lap->nama);
+
+            // Membentuk string list dengan newline (\n)
+            $userInfo =
+                "Kecamatan: {$lap->kecamatan}\n" .
+                "Kelurahan: {$lap->kelurahan}\n" .
+                "JK: {$lap->jenis_kelamin}\n" .
+                "Umur: {$lap->umur}\n" .
+                "No. Telp: {$lap->no_telp}";
+
+            // Menggunakan setCellValueExplicit agar Excel membaca newline
+            $sheet->setCellValueExplicit('C' . $row, $userInfo, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+
+            // Mengaktifkan wrap text di Excel
+            $sheet->getStyle('C' . $row)->getAlignment()->setWrapText(true);
+
+            $row++;
+        }
+
+        // Ambil objek kolom terakhir yang memiliki data (A, B, C, dst.)
+        $lastColumn = $sheet->getHighestDataColumn();
+
+        // Iterate melalui kolom-kolom yang memiliki data dan atur lebar kolomnya
+        foreach (range('A', $lastColumn) as $column) {
+            $sheet->getColumnDimension($column)->setAutoSize(true);
+        }
+
+        // Menerapkan style alignment untuk seluruh sel dalam spreadsheet
+        $sheet->getStyle('A1:' . $lastColumn . $row)->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('C4:' . $lastColumn . $row)->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('A3:I3')->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('A11:A' . $row)->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('A1:I1')->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('E7:E8')->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        // Memberikan border ke seluruh sel di kolom
+        for ($col = 'A'; $col <= 'C'; $col++) {
+            $sheet->getStyle($col . '3:' . $col . ($row - 1))->applyFromArray([
+                'borders' => [
+                    'allBorders' => [
+                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                    ],
+                ],
+            ]);
+        }
+
+        $excelFileName = 'REKAP PENDAFTAR ' . $data_event->nama_event . '.xlsx';
+        $excelFilePath = public_path($excelFileName);
+        $writer = new Xlsx($spreadsheet);
+        $writer->save($excelFilePath);
+
+        // Kembalikan response dengan file Excel yang diunduh
+        return response()->download(public_path($excelFileName));
+    }
+
+    public function export_excel_absen($params)
+    {
+        Carbon::setLocale('id'); // Set bahasa ke Indonesia
+
+        $data = Absensi::where('uuid_event', $params)->get();
+        $data->map(function ($item) {
+            $user = User::where('uuid', $item->uuid_user)->first();
+
+            $item->nama = $user->name;
+
+            return $item;
+        });
+
+        $data_event = Event::where('uuid', $params)->first();
+
+        // Buat objek Spreadsheet
+        $spreadsheet = new Spreadsheet();
+
+        // Ambil objek aktif (sheet aktif)
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+        $sheet->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_FOLIO);
+        $sheet->getRowDimension(1)->setRowHeight(30);
+        $spreadsheet->getDefaultStyle()->getFont()->setName('Times New Roman');
+        $fontStyle = [
+            'font' => [
+                'name' => 'Times New Roman',
+                'size' => 12,
+            ],
+        ];
+
+        // Isi data ke dalam sheet
+        $centerStyle = [
+            'alignment' => [
+                //'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ];
+        $sheet->setCellValue('A1', 'REKAP ANSENSI EVENT')->mergeCells('A1:D1');
+        $sheet->setCellValue('A2', $data_event->nama_event)->mergeCells('A2:D2');
+
+        $sheet->setCellValue('A3', 'No');
+        $sheet->setCellValue('B3', 'Nama');
+        $sheet->setCellValue('C3', 'Absen Masuk');
+        $sheet->setCellValue('D3', 'Absen Pulang');
+
+        // Memberikan warna pada sel-sel baris ke-3
+        $sheet->getStyle('A3:D3')->applyFromArray([
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'startColor' => [
+                    'rgb' => 'acb9ca', // Warna Peach
+                ],
+            ],
+        ]);
+
+        $row = 4;
+
+        foreach ($data as $index => $lap) {
+            $sheet->setCellValue('A' . $row, $index + 1);
+            $sheet->setCellValue('B' . $row, $lap->nama);
+
+            // Cek absen masuk dan format waktunya
+            $absenMasuk = $lap->masuk
+                ? "Telah absen pada " . Carbon::parse($lap->created_at)->isoFormat('dddd, D MMMM Y [pukul] HH.mm.ss')
+                : "-";
+
+            // Cek absen pulang dan format waktunya
+            $absenPulang = $lap->pulang
+                ? "Telah absen pada " . Carbon::parse($lap->updated_at)->isoFormat('dddd, D MMMM Y [pukul] HH.mm.ss')
+                : "-";
+
+            // Menulis hasil ke dalam Excel
+            $sheet->setCellValue('C' . $row, $absenMasuk);
+            $sheet->setCellValue('D' . $row, $absenPulang);
+
+            $row++;
+        }
+        // Ambil objek kolom terakhir yang memiliki data (A, B, C, dst.)
+        $lastColumn = $sheet->getHighestDataColumn();
+
+        // Iterate melalui kolom-kolom yang memiliki data dan atur lebar kolomnya
+        foreach (range('A', $lastColumn) as $column) {
+            $sheet->getColumnDimension($column)->setAutoSize(true);
+        }
+
+        // Menerapkan style alignment untuk seluruh sel dalam spreadsheet
+        $sheet->getStyle('A1:' . $lastColumn . $row)->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('C4:' . $lastColumn . $row)->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('A3:I3')->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('A11:A' . $row)->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('A1:I1')->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        $sheet->getStyle('E7:E8')->applyFromArray([
+            'alignment' => [
+                'vertical' => Alignment::VERTICAL_CENTER,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ],
+        ]);
+
+        // Memberikan border ke seluruh sel di kolom
+        for ($col = 'A'; $col <= 'D'; $col++) {
+            $sheet->getStyle($col . '3:' . $col . ($row - 1))->applyFromArray([
+                'borders' => [
+                    'allBorders' => [
+                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                    ],
+                ],
+            ]);
+        }
+
+        $excelFileName = 'REKAP ABSENSI ' . $data_event->nama_event . '.xlsx';
+        $excelFilePath = public_path($excelFileName);
+        $writer = new Xlsx($spreadsheet);
+        $writer->save($excelFilePath);
+
+        // Kembalikan response dengan file Excel yang diunduh
+        return response()->download(public_path($excelFileName));
     }
 }
