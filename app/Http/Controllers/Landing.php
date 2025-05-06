@@ -21,7 +21,8 @@ class Landing extends BaseController
         $data_makassar = DataMakassar::select('uuid', 'nama', 'nilai', 'satuan', 'icon', 'position')
             ->orderBy('position', 'asc') // Urutkan berdasarkan posisi
             ->get();
-        return view('landing.home.index', compact('module', 'data_makassar'));
+        $event = Event::all();
+        return view('landing.home.index', compact('module', 'data_makassar', 'event'));
     }
 
     public function event()
@@ -120,7 +121,35 @@ class Landing extends BaseController
         } else {
             $event_daftar = null; // Atur nilai default jika tidak ada user yang login
         }
-        return view('landing.event.detail', compact('event', 'module', 'event_terbaru', 'event_populer', 'event_daftar'));
+
+        $user_event = User::where('uuid', auth()->user()->uuid)->first();
+        if ($user_event) {
+            $usia_user = Carbon::parse($user_event->tanggal_lahir)->age;
+            if ($event && $event->validasi_umur) {
+                // Pecah range usia dari "min-max", misalnya "18-25"
+                [$minUsia, $maxUsia] = explode('-', $event->validasi_umur);
+
+                // Cek apakah usia user masuk dalam rentang
+                $bolehDaftar = $usia_user >= (int)$minUsia && $usia_user <= (int)$maxUsia;
+            }
+        }
+
+        $sudahDaftar = DB::table('pendaftars')
+            ->where('uuid_user', auth()->user()->uuid)
+            ->first();
+
+        $status = false;
+
+        if ($sudahDaftar) {
+            $eventTerkait = DB::table('events')
+                ->where('uuid', $sudahDaftar->uuid_event)
+                ->first();
+
+            if ($eventTerkait && $eventTerkait->validasi_event === $event->validasi_event) {
+                $status = true;
+            }
+        }
+        return view('landing.event.detail', compact('event', 'module', 'event_terbaru', 'event_populer', 'event_daftar', 'bolehDaftar', 'status'));
     }
 
     public function search(Request $request)

@@ -10,7 +10,7 @@
     $activeColor = $isActive ? 'color: #F4BE2A' : 'color: #FFFFFF';
 @endphp
 
-<div class="aside-menu bg-primary flex-column-fluid" style="background: linear-gradient(to bottom, #15a3a3, #133b4e);">
+<div class="aside-menu bg-primary flex-column-fluid" style="background: linear-gradient(to bottom, #f3ad2e, #ec1a25);">
     <!--begin::Aside Menu-->
     <div class="hover-scroll-overlay-y mb-5 mb-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true"
         data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto"

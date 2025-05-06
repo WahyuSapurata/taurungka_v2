@@ -69,6 +69,10 @@ class EventController extends BaseController
             $data->status_daftar = false;
             $data->banner = $newBanner;
             $data->dukumen = $newDocument;
+            $data->validasi_umur = $storeEventRequest->validasi_umur;
+            $data->validasi_event = $storeEventRequest->validasi_event;
+            $data->link_feedback = $storeEventRequest->link_feedback;
+            $data->status_feedback = false;
             $data->save();
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), $e->getMessage(), 400);
@@ -121,9 +125,11 @@ class EventController extends BaseController
             $data->kouta_kegiatan = $updateEventRequest->kouta_kegiatan;
             $data->konten_kegiatan = $updateEventRequest->konten_kegiatan;
             $data->tempat = $updateEventRequest->tempat;
-            $data->status_daftar = false;
             $data->banner = $updateEventRequest->file('banner') ? $newBanner : $data->banner;
             $data->dukumen = $updateEventRequest->file('document') ? $newDocument : $data->dukumen;
+            $data->validasi_umur = $updateEventRequest->validasi_umur;
+            $data->validasi_event = $updateEventRequest->validasi_event;
+            $data->link_feedback = $updateEventRequest->link_feedback;
             $data->save();
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), $e->getMessage(), 400);
@@ -161,6 +167,22 @@ class EventController extends BaseController
                 $data->status_daftar = false;
             } elseif ($data->status_daftar == false) {
                 $data->status_daftar = true;
+            }
+            $data->save();
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(), $e->getMessage(), 400);
+        }
+        return $this->sendResponse($data, 'Update event success');
+    }
+
+    public function update_tombol_feedback($params)
+    {
+        $data = Event::where('uuid', $params)->first();
+        try {
+            if ($data->status_feedback == true) {
+                $data->status_feedback = false;
+            } elseif ($data->status_feedback == false) {
+                $data->status_feedback = true;
             }
             $data->save();
         } catch (\Exception $e) {

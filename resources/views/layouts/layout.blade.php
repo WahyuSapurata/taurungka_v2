@@ -48,17 +48,18 @@
                 data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}"
                 data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_mobile_toggle">
                 <!--begin::Brand-->
-                <div class="aside-logo flex-column-auto" style="background-color: #15a3a3;">
+                <div class="aside-logo flex-column-auto" style="background-color: #f3ad2e;">
                     <!--end::sidebar mobile toggle-->
                     <!--begin::Mobile logo-->
                     <div class="app-sidebar-logo d-flex align-items-center flex-grow-1 flex-lg-grow-0"
                         id="kt_app_sidebar_logo">
                         <a href="" class="full-logo">
                             <div class="app-sidebar-logo-default"
-                                style="color: #f08d2c; font-size: 25px; font-weight: bold; font-style: italic">TAURUNGKA
+                                style="color: #ffffff; font-size: 25px; font-weight: bold; font-style: italic;">
+                                TAURUNGKA
                             </div>
                             <div class="app-sidebar-logo-minimize"
-                                style="color: #f08d2c; font-size: 25px; font-weight: bold; font-style: italic">TRK</div>
+                                style="color: #ffffff; font-size: 25px; font-weight: bold; font-style: italic">TRK</div>
                         </a>
                     </div>
 

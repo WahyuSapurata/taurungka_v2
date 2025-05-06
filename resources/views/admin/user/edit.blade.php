@@ -43,6 +43,32 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-10">
+                                            <label class="form-label">Kota Pendaftar</label>
+                                            <select class="form-select" id="lokasi_pendaftar">
+                                                <option value="">-- Pilih --</option>
+                                                <option value="makassar"
+                                                    {{ $data->lokasi_pendaftar == 'makassar' ? 'selected' : '' }}>Makassar
+                                                </option>
+                                                <option value="luar_makassar"
+                                                    {{ $data->lokasi_pendaftar != 'makassar' && $data->lokasi_pendaftar != '' ? 'selected' : '' }}>
+                                                    Luar Makassar</option>
+                                            </select>
+
+                                            <!-- Hidden input yang akan dikirim -->
+                                            <input type="hidden" name="lokasi_pendaftar" id="lokasi_pendaftar_final"
+                                                value="{{ $data->lokasi_pendaftar }}">
+
+                                            <!-- Input untuk lokasi lainnya -->
+                                            <input type="text" id="lokasi_pendaftar_lainnya" class="form-control mt-2"
+                                                placeholder="Masukkan lokasi pendaftar lainnya"
+                                                value="{{ $data->lokasi_pendaftar != 'makassar' && $data->lokasi_pendaftar != '' ? $data->lokasi_pendaftar : '' }}"
+                                                style="{{ $data->lokasi_pendaftar != 'makassar' && $data->lokasi_pendaftar != '' ? '' : 'display: none;' }}">
+
+                                            <small class="text-danger lokasi_pendaftar_error"></small>
+                                        </div>
+
+
+                                        <div class="mb-10">
                                             <label class="form-label">Nama</label>
                                             <input type="text" id="name" class="form-control" name="name"
                                                 value="{{ $data->name }}">
@@ -71,7 +97,7 @@
                                         </div>
 
                                         <div class="mb-10">
-                                            <label class="form-label">Nomo Hanphone</label>
+                                            <label class="form-label">Nomor Hanphone</label>
                                             <input type="number" id="no_hp" class="form-control" name="no_hp"
                                                 value="{{ $data->no_hp }}">
                                             <small class="text-danger no_hp_error"></small>
@@ -121,6 +147,9 @@
                                                 <option value="belum kawin"
                                                     {{ $data->status_perkawinan == 'belum kawin' ? 'selected' : '' }}>Belum
                                                     Kawin</option>
+                                                <option value="kawin cerai"
+                                                    {{ $data->status_perkawinan == 'kawin cerai' ? 'selected' : '' }}>Kawin
+                                                    Cerai</option>
                                             </select>
                                             <small class="text-danger status_perkawinan_error"></small>
                                         </div>
@@ -139,6 +168,10 @@
                                                     Budha</option>
                                                 <option value="katolik" {{ $data->agama == 'katolik' ? 'selected' : '' }}>
                                                     Katolik</option>
+                                                <option value="ketuhanan yang maha esa"
+                                                    {{ $data->agama == 'ketuhanan yang maha esa' ? 'selected' : '' }}>
+                                                    Ketuhanan Yang Maha
+                                                    Esa</option>
                                             </select>
                                             <small class="text-danger agama_error"></small>
                                         </div>
@@ -186,10 +219,34 @@
 
                                         <div class="mb-10">
                                             <label class="form-label">Pekerjaan</label>
-                                            <input type="text" id="pekerjaan" class="form-control" name="pekerjaan"
+                                            <select class="form-select" id="pekerjaan">
+                                                <option value="">-- Pilih --</option>
+                                                <option value="pelajar"
+                                                    {{ $data->pekerjaan == 'pelajar' ? 'selected' : '' }}>Pelajar</option>
+                                                <option value="mahasiswa"
+                                                    {{ $data->pekerjaan == 'mahasiswa' ? 'selected' : '' }}>Mahasiswa
+                                                </option>
+                                                <option value="wirausaha"
+                                                    {{ $data->pekerjaan == 'wirausaha' ? 'selected' : '' }}>Wirausaha
+                                                </option>
+                                                <option value="lainnya"
+                                                    {{ !in_array($data->pekerjaan, ['pelajar', 'mahasiswa', 'wirausaha']) && $data->pekerjaan ? 'selected' : '' }}>
+                                                    Lainnya</option>
+                                            </select>
+
+                                            <!-- Input text untuk 'lainnya' -->
+                                            <input type="text" id="pekerjaan_lainnya" class="form-control mt-2"
+                                                placeholder="Masukkan pekerjaan lainnya"
+                                                value="{{ !in_array($data->pekerjaan, ['pelajar', 'mahasiswa', 'wirausaha']) ? $data->pekerjaan : '' }}"
+                                                style="{{ !in_array($data->pekerjaan, ['pelajar', 'mahasiswa', 'wirausaha']) && $data->pekerjaan ? '' : 'display: none;' }}">
+
+                                            <!-- Hidden input yang akan dikirim -->
+                                            <input type="hidden" name="pekerjaan" id="pekerjaan_final"
                                                 value="{{ $data->pekerjaan }}">
+
                                             <small class="text-danger pekerjaan_error"></small>
                                         </div>
+
 
                                         <div class="mb-10">
                                             <label class="form-label">Pedidikan Terakhir</label>
@@ -203,6 +260,12 @@
                                                 <option value="SMA Sederajat"
                                                     {{ $data->pedidikan_terakhir == 'SMA Sederajat' ? 'selected' : '' }}>
                                                     SMA Sederajat</option>
+                                                <option value="D1"
+                                                    {{ $data->pedidikan_terakhir == 'D1' ? 'selected' : '' }}>D1</option>
+                                                <option value="D2"
+                                                    {{ $data->pedidikan_terakhir == 'D2' ? 'selected' : '' }}>D2</option>
+                                                <option value="D3"
+                                                    {{ $data->pedidikan_terakhir == 'D3' ? 'selected' : '' }}>D3</option>
                                                 <option value="S1"
                                                     {{ $data->pedidikan_terakhir == 'S1' ? 'selected' : '' }}>S1</option>
                                                 <option value="S2"
@@ -361,8 +424,71 @@
             });
         });
 
+        const selectPekerjaan = document.getElementById("pekerjaan");
+        const inputLainnya = document.getElementById("pekerjaan_lainnya");
+        const inputFinal = document.getElementById("pekerjaan_final");
+
+        function updatePekerjaanFinal() {
+            if (selectPekerjaan.value === "lainnya") {
+                inputFinal.value = inputLainnya.value;
+            } else {
+                inputFinal.value = selectPekerjaan.value;
+            }
+        }
+
+        selectPekerjaan.addEventListener("change", function() {
+            if (this.value === "lainnya") {
+                inputLainnya.style.display = "block";
+                inputLainnya.required = true;
+                inputFinal.value = inputLainnya.value;
+            } else {
+                inputLainnya.style.display = "none";
+                inputLainnya.required = false;
+                inputLainnya.value = "";
+                inputFinal.value = this.value;
+            }
+        });
+
+        inputLainnya.addEventListener("input", updatePekerjaanFinal);
+
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener("DOMContentLoaded", function() {
+            updatePekerjaanFinal();
+        });
+
+        const selectLokasi = document.getElementById("lokasi_pendaftar");
+        const inputLokasi = document.getElementById("lokasi_pendaftar_lainnya");
+        const inputLokasiFinal = document.getElementById("lokasi_pendaftar_final");
+
+        // Jalankan saat select berubah
+        selectLokasi.addEventListener("change", function() {
+            if (this.value === "luar_makassar") {
+                inputLokasi.style.display = "block";
+                inputLokasi.required = true;
+                inputLokasiFinal.value = inputLokasi.value; // Set sementara dengan isi input jika sudah ada
+            } else {
+                inputLokasi.style.display = "none";
+                inputLokasi.required = false;
+                inputLokasi.value = "";
+                inputLokasiFinal.value = this.value;
+            }
+        });
+
+        // Perbarui input hidden saat mengetik di input text
+        inputLokasi.addEventListener("input", function() {
+            inputLokasiFinal.value = this.value;
+        });
+
         $(document).on('submit', ".form-data", function(e) {
             e.preventDefault();
+
+            if (selectPekerjaan.value === "lainnya") {
+                inputFinal.value = inputLainnya.value;
+            }
+
+            if (selectLokasi.value === "luar_makassar") {
+                inputLokasiFinal.value = inputLokasi.value;
+            }
 
             $.ajaxSetup({
                 headers: {

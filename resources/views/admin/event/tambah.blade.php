@@ -119,6 +119,38 @@
                                 </div>
 
                                 <div class="mb-10">
+                                    <label class="form-label">Range Usia</label>
+                                    <div id="kt_slider_basic" class="noUi-sm"></div>
+
+                                    <div class="pt-5">
+                                        <div class="fw-bolder mb-2">Min Usia: <span id="kt_slider_basic_min">20</span>
+                                        </div>
+                                        <div class="fw-bolder mb-2">Max Usia: <span id="kt_slider_basic_max">80</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Input tunggal berisi format "min-max" -->
+                                    <input type="hidden" name="validasi_umur" id="usia_range" value="20-80">
+
+                                    <div>
+                                        <small class="text-danger validasi_umur_error"></small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-10">
+                                    <label class="form-label">ID Event</label>
+                                    <input type="number" id="validasi_event" class="form-control"
+                                        name="validasi_event">
+                                    <small class="text-danger validasi_event_error"></small>
+                                </div>
+
+                                <div class="mb-10">
+                                    <label class="form-label">Link Feedback</label>
+                                    <input type="text" id="link_feedback" class="form-control" name="link_feedback">
+                                    <small class="text-danger link_feedback_error"></small>
+                                </div>
+
+                                <div class="mb-10">
                                     <label for="dukumen" class="form-label">Dokumen Tambahan <small
                                             style="font-style: italic">(Jika ada)</small></label>
                                     <input class="form-control" accept=".pdf" type="file" name="document"
@@ -158,6 +190,31 @@
             altFormat: "Y-m-d",
             dateFormat: "Y-m-d",
             mode: "range",
+        });
+
+        var slider = document.querySelector("#kt_slider_basic");
+        var minLabel = document.querySelector("#kt_slider_basic_min");
+        var maxLabel = document.querySelector("#kt_slider_basic_max");
+        var inputUsiaRange = document.querySelector("#usia_range");
+
+        noUiSlider.create(slider, {
+            start: [20, 80],
+            connect: true,
+            step: 1,
+            range: {
+                min: 0,
+                max: 100
+            },
+            format: {
+                to: value => Math.round(value),
+                from: value => Number(value)
+            }
+        });
+
+        slider.noUiSlider.on("update", function(values) {
+            minLabel.innerHTML = values[0];
+            maxLabel.innerHTML = values[1];
+            inputUsiaRange.value = values[0] + "-" + values[1];
         });
 
         $(document).on('click', '#button-side-form', function() {

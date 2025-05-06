@@ -109,6 +109,68 @@
                                         {{ $event->tempat }}</td>
                                 </tr>
                             </table>
+                            @if ($event->status_daftar)
+                                @if ($status)
+                                    @if ($event_daftar)
+                                        <div class="alert alert-success mt-4 text-center" role="alert">
+                                            Selamat anda telah mendaftar event ini
+                                        </div>
+                                    @else
+                                        <div class="alert alert-warning mt-4 text-center" role="alert">
+                                            Anda sudah mendaftar event yang sama, silahkan daftar event lain.
+                                        </div>
+                                    @endif
+                                @else
+                                    @if ($bolehDaftar == true)
+                                        @if ($event_daftar)
+                                            <div class="alert alert-success mt-4 text-center" role="alert">
+                                                Selamat anda telah mendaftar event ini
+                                            </div>
+                                        @else
+                                            @if (auth()->check())
+                                                <div class="d-flex my-3 tw-gap-11 flex-wrap d-lg-block">
+                                                    <form action="{{ route('daftar-event') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="uuid_user"
+                                                            value="{{ auth()->user()->uuid }}">
+                                                        <input type="hidden" name="uuid_event"
+                                                            value="{{ $event->uuid }}">
+                                                        <button
+                                                            class="cursor-small btn btn-main hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
+                                                            data-block="button">
+                                                            <span class="button__flair"></span>
+                                                            <span class="button__label">Daftar Event</span>
+                                                            <span
+                                                                class="tw-w-7 tw-h-7 bg-white text-main-600 tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
+                                                                <i class="ph-bold ph-calendar-check"></i>
+                                                            </span>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            @else
+                                                <div class="d-flex my-3 tw-gap-11 flex-wrap d-lg-block">
+                                                    <a href="{{ route('login.login-akun') }}"
+                                                        class="cursor-small btn btn-main hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
+                                                        data-block="button">
+                                                        <span class="button__flair"></span>
+                                                        <span class="button__label">Daftar Event</span>
+                                                        <span
+                                                            class="tw-w-7 tw-h-7 bg-white text-main-600 tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
+                                                            <i class="ph-bold ph-calendar-check"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            @endif
+                                        @endif
+                                    @else
+                                        <div class="alert alert-warning mt-4 text-center" role="alert">
+                                            Umur tidak sesuai untuk mendaftar event ini, silahkan daftar event lain yang
+                                            sesuai
+                                            umur anda.
+                                        </div>
+                                    @endif
+                                @endif
+                            @endif
                             @if ($event->dukumen)
                                 <div class="d-flex tw-gap-11 flex-wrap d-lg-block mt-4 d-none">
                                     <a href="{{ asset('public/event-document/' . $event->dukumen) }}" target="_blank"
@@ -123,44 +185,20 @@
                                     </a>
                                 </div>
                             @endif
-                            @if ($event->status_daftar)
-                                @if ($event_daftar)
-                                    <div class="alert alert-success mt-4 text-center" role="alert">
-                                        Selamat anda telah mendaftar event ini
+                            @if (auth()->check())
+                                @if ($event->status_feedback == true)
+                                    <div class="d-flex tw-gap-11 flex-wrap d-lg-block mt-4 d-none">
+                                        <a href="{{ $event->link_feedback }}" target="_blank"
+                                            class="cursor-small btn btn-success hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
+                                            data-block="button">
+                                            <span class="button__flair"></span>
+                                            <span class="button__label">Link Feedback</span>
+                                            <span
+                                                class="tw-w-7 tw-h-7 bg-white text-success tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
+                                                <i class="ph-bold ph-link"></i>
+                                            </span>
+                                        </a>
                                     </div>
-                                @else
-                                    @if (auth()->check())
-                                        <div class="d-flex my-3 tw-gap-11 flex-wrap d-lg-block">
-                                            <form action="{{ route('daftar-event') }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="uuid_user" value="{{ auth()->user()->uuid }}">
-                                                <input type="hidden" name="uuid_event" value="{{ $event->uuid }}">
-                                                <button
-                                                    class="cursor-small btn btn-main hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
-                                                    data-block="button">
-                                                    <span class="button__flair"></span>
-                                                    <span class="button__label">Daftar Event</span>
-                                                    <span
-                                                        class="tw-w-7 tw-h-7 bg-white text-main-600 tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
-                                                        <i class="ph-bold ph-calendar-check"></i>
-                                                    </span>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    @else
-                                        <div class="d-flex my-3 tw-gap-11 flex-wrap d-lg-block">
-                                            <a href="{{ route('login.login-akun') }}"
-                                                class="cursor-small btn btn-main hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
-                                                data-block="button">
-                                                <span class="button__flair"></span>
-                                                <span class="button__label">Daftar Event</span>
-                                                <span
-                                                    class="tw-w-7 tw-h-7 bg-white text-main-600 tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
-                                                    <i class="ph-bold ph-calendar-check"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    @endif
                                 @endif
                             @endif
                             <div class="tw-my-11 d-flex justify-content-between flex-wrap tw-gap-6" data-aos="fade-up"

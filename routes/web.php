@@ -65,6 +65,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/update-event/{params}', 'EventController@update')->name('update-event');
         Route::delete('/delete-event/{params}', 'EventController@delete')->name('delete-event');
         Route::get('/button-event/{params}', 'EventController@update_tombol')->name('button-event');
+        Route::get('/button-feedback/{params}', 'EventController@update_tombol_feedback')->name('button-feedback');
 
         Route::get('/list-pendaftar/{params}', 'EventController@list_pendaftar')->name('list-pendaftar');
         Route::get('/get-list-pendaftar/{params}', 'EventController@get_list_pendaftar')->name('get-list-pendaftar');

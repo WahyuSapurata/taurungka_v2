@@ -23,6 +23,10 @@ return new class extends Migration
             $table->string('status_daftar');
             $table->string('dukumen')->nullable();
             $table->string('banner');
+            $table->string('validasi_umur');
+            $table->string('validasi_event')->nullable();
+            $table->string('link_feedback')->nullable();
+            $table->string('status_feedback')->nullable();
             $table->timestamps();
         });
     }

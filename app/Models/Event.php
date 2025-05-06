@@ -23,6 +23,10 @@ class Event extends Model
         'status_daftar',
         'dukumen',
         'banner',
+        'validasi_umur',
+        'validasi_event',
+        'link_feedback',
+        'status_feedback',
     ];
 
     protected static function boot()

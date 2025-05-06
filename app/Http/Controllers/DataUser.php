@@ -67,6 +67,7 @@ class DataUser extends BaseController
 
         try {
             $data = new User();
+            $data->lokasi_pendaftar = $registerRequest->lokasi_pendaftar;
             $data->name = $registerRequest->name;
             $data->username = $registerRequest->username;
             $data->password = $registerRequest->password;
@@ -122,6 +123,7 @@ class DataUser extends BaseController
         }
 
         try {
+            $data->lokasi_pendaftar = $registerRequest->lokasi_pendaftar;
             $data->name = $registerRequest->name;
             $data->username = $registerRequest->username;
             $data->password = $registerRequest->password;

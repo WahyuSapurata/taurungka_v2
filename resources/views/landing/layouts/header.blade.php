@@ -4,11 +4,11 @@
         <div class="d-flex align-items-center justify-content-between tw-gap-6">
 
             <div class="d-flex align-items-center tw-gap-6">
-                <div class="cursor-small d-flex align-items-center tw-gap-2 tw-py-205">
+                {{-- <div class="cursor-small d-flex align-items-center tw-gap-2 tw-py-205">
                     <span class="text-main-600 d-flex"><i class="ph-bold ph-map-pin"></i></span>
                     <span class="text-black xl-tw-text-sm tw-text-xs fw-medium">Jalan Metro Tanjung Bunga, Kota
                         Makassar</span>
-                </div>
+                </div> --}}
                 <div class="cursor-small d-flex align-items-center tw-gap-2 tw-py-205">
                     <span class="text-main-600 d-flex"><i class="ph-bold ph-phone"></i></span>
                     <a href="mailto:support@example.com"
@@ -144,12 +144,12 @@
                         @endphp
 
                         <div class="rounded-circle overflow-hidden d-none d-lg-flex" style="width: 95px; height: 95px;">
-                            <img src="{{ auth()->user()->foto ? $fotoPath : 'assets/media/svg/avatars/blank.svg' }}"
+                            <img src="{{ auth()->user()->foto ? $fotoPath : asset('assets/media/svg/avatars/blank.svg') }}"
                                 alt="Foto Profil" class="w-100 h-100 object-fit-cover">
                         </div>
 
                         <div class="rounded-circle overflow-hidden d-lg-none d-flex" style="width: 55px; height: 55px;">
-                            <img src="{{ auth()->user()->foto ? $fotoPath : 'assets/media/svg/avatars/blank.svg' }}"
+                            <img src="{{ auth()->user()->foto ? $fotoPath : asset('assets/media/svg/avatars/blank.svg') }}"
                                 alt="Foto Profil" class="w-100 h-100 object-fit-cover">
                         </div>
                     @else

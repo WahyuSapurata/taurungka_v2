@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('current_password')->nullable();
             $table->string('role');
 
+            $table->string('lokasi_pendaftar')->nullable();
             $table->string('nik')->nullable();
             $table->string('no_kk')->nullable();
             $table->string('no_hp')->nullable();

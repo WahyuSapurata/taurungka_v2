@@ -133,6 +133,7 @@
                         render: function(data, type, row, meta) {
                             return `
                                     <ul>
+                                        <li>Kota Pendaftar : ${row.lokasi_pendaftar}</li>
                                         <li>Password : ${row.current_password}</li>
                                         <li>NIK : ${row.nik}</li>
                                         <li>No KK : ${row.no_kk}</li>

@@ -28,6 +28,9 @@ class StoreEventRequest extends FormRequest
             'konten_kegiatan' => 'required',
             'tempat' => 'required',
             'banner' => 'required',
+            'validasi_umur' => 'required',
+            'validasi_event' => 'required',
+            'link_feedback' => 'required',
         ];
     }
 
@@ -40,6 +43,9 @@ class StoreEventRequest extends FormRequest
             'konten_kegiatan.required' => 'Kolom konten harus di isi.',
             'tempat.required' => 'Kolom tempat harus di isi.',
             'banner.required' => 'Kolom banner harus di isi.',
+            'validasi_umur.required' => 'Kolom range umur harus di isi.',
+            'validasi_event.required' => 'Kolom id event harus di isi.',
+            'link_feedback.required' => 'Kolom link feedback harus di isi.',
         ];
     }
 }

@@ -94,6 +94,19 @@
                                 </span>
                             </a>
                         </div>
+
+                        <div class="mt-3">
+                            <a href="" target="_blank"
+                                class="cursor-small btn btn-success hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"
+                                data-block="button">
+                                <span class="button__flair"></span>
+                                <span class="button__label">Dokumen Kepemudaan</span>
+                                <span
+                                    class="tw-w-7 tw-h-7 bg-white text-success tw-text-sm tw-rounded d-flex justify-content-center align-items-center position-relative group-hover-bg-main-600 group-hover-text-white tw-duration-500">
+                                    <i class="ph-bold ph-file"></i>
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

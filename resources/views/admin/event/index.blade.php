@@ -120,6 +120,41 @@
             });
         })
 
+        $(document).on('click', '.button-feedback', function(e) {
+            e.preventDefault();
+            let label = $(this).attr('data-label');
+
+            $.ajax({
+                type: 'GET',
+                url: '/admin/button-feedback/' + $(this).attr('data-uuid'),
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    $(".text-danger").html("");
+                    if (response.success == true) {
+                        swal
+                            .fire({
+                                text: `Feedback di ` + label,
+                                icon: "success",
+                                showConfirmButton: false,
+                                timer: 1500,
+                            })
+                            .then(function() {
+                                initDatatable();
+                            });
+                    } else {
+                        swal.fire({
+                            title: response.message,
+                            text: response.data,
+                            icon: "warning",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }
+                },
+            });
+        })
+
         $(document).on('keyup', '#search_', function(e) {
             e.preventDefault();
             control.searchTable(this.value);
@@ -234,6 +269,10 @@
 
                                 <a href="javascript:;" type="button" data-uuid="${data}" data-label="${full.status_daftar == false ? 'Buka' : 'Tutup'}" class="btn btn-success button-daftar btn-sm">
                                     ${full.status_daftar == false ? 'Buka Pendaftaran' : 'Tutup Pendaftaran'}
+                                </a>
+
+                                <a href="javascript:;" type="button" data-uuid="${data}" data-label="${full.status_feedback == false ? 'Buka' : 'Tutup'}" class="btn btn-primary button-feedback btn-sm">
+                                    ${full.status_feedback == false ? 'Buka Feedback' : 'Tutup Feedback'}
                                 </a>
 
                                 <a href="javascript:;" data-uuid="${data}" class="btn btn-info btn-sm  button-list-pendaftar">

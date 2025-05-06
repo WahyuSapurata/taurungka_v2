@@ -26,6 +26,7 @@ class User extends Authenticatable
         'current_password',
         'role',
 
+        'lokasi_pendaftar',
         'nik',
         'no_kk',
         'no_hp',

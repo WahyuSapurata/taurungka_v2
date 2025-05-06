@@ -22,11 +22,12 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'lokasi_pendaftar' => 'required',
             'name' => 'required',
             'username' => 'required',
             'password' => 'required',
-            'nik' => 'required',
-            'no_kk' => 'required',
+            'nik' => 'required|min:16',
+            'no_kk' => 'min:16',
             'no_hp' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
@@ -34,11 +35,8 @@ class RegisterRequest extends FormRequest
             'jenis_kelamin' => 'required',
             'status_perkawinan' => 'required',
             'agama' => 'required',
-            'alamat' => 'required',
             'kecamatan' => 'required',
             'kelurahan' => 'required',
-            'rt' => 'required',
-            'rw' => 'required',
             'pekerjaan' => 'required',
             'pedidikan_terakhir' => 'required',
         ];
@@ -47,11 +45,13 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
+            'lokasi_pendaftar.required' => 'Kolom kota pendaftar harus di isi.',
             'name.required' => 'Kolom name harus di isi.',
             'username.required' => 'Kolom username harus di isi.',
             'password.required' => 'Kolom password harus di isi.',
             'nik.required' => 'Kolom nik harus di isi.',
-            'no_kk.required' => 'Kolom no kk harus di isi.',
+            'nik.min' => 'Nik minimal 16 karakter.',
+            'no_kk.min' => 'No KK minimal 16 karakter.',
             'no_hp.required' => 'Kolom no hp harus di isi.',
             'tempat_lahir.required' => 'Kolom tempat_lahir harus di isi.',
             'tanggal_lahir.required' => 'Kolom tanggal lahir harus di isi.',
@@ -59,11 +59,8 @@ class RegisterRequest extends FormRequest
             'jenis_kelamin.required' => 'Kolom jenis kelamin harus di isi.',
             'status_perkawinan.required' => 'Kolom status perkawinan harus di isi.',
             'agama.required' => 'Kolom agama di isi.',
-            'alamat.required' => 'Kolom alamat di isi.',
             'kecamatan.required' => 'Kolom kecamatan di isi.',
             'kelurahan.required' => 'Kolom kelurahan di isi.',
-            'rt.required' => 'Kolom rt di isi.',
-            'rw.required' => 'Kolom rw di isi.',
             'pekerjaan.required' => 'Kolom pekerjaan di isi.',
             'pedidikan_terakhir.required' => 'Kolom pedidikan_terakhir di isi.',
         ];

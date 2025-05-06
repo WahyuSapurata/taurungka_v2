@@ -42,6 +42,24 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-10">
+                                            <label class="form-label">Kota Pendaftar</label>
+                                            <select class="form-select" id="lokasi_pendaftar">
+                                                <option value="">-- Pilih --</option>
+                                                <option value="makassar">Makassar</option>
+                                                <option value="luar_makassar">Luar Makassar</option>
+                                            </select>
+
+                                            <!-- Ini input yang akan dikirim ke server -->
+                                            <input type="hidden" name="lokasi_pendaftar" id="lokasi_pendaftar_final">
+
+                                            <!-- Input text untuk 'lainnya' -->
+                                            <input type="text" id="lokasi_pendaftar_lainnya" class="form-control mt-2"
+                                                placeholder="Masukkan lokasi pendaftar lainnya" style="display: none;">
+
+                                            <small class="text-danger lokasi_pendaftar_error"></small>
+                                        </div>
+
+                                        <div class="mb-10">
                                             <label class="form-label">Nama</label>
                                             <input type="text" id="name" class="form-control" name="name">
                                             <small class="text-danger name_error"></small>
@@ -108,6 +126,7 @@
                                                 <option value="">-- Pilih --</option>
                                                 <option value="kawin">Kawin</option>
                                                 <option value="belum kawin">Belum Kawin</option>
+                                                <option value="kawin cerai">Kawin Cerai</option>
                                             </select>
                                             <small class="text-danger status_perkawinan_error"></small>
                                         </div>
@@ -121,6 +140,8 @@
                                                 <option value="hindu">Hindu</option>
                                                 <option value="budha">Budha</option>
                                                 <option value="katolik">Katolik</option>
+                                                <option value="ketuhanan yang maha esa">Ketuhanan Yang Maha
+                                                    Esa</option>
                                             </select>
                                             <small class="text-danger agama_error"></small>
                                         </div>
@@ -165,7 +186,21 @@
 
                                         <div class="mb-10">
                                             <label class="form-label">Pekerjaan</label>
-                                            <input type="text" id="pekerjaan" class="form-control" name="pekerjaan">
+                                            <select class="form-select" id="pekerjaan">
+                                                <option value="">-- Pilih --</option>
+                                                <option value="pelajar">Pelajar</option>
+                                                <option value="mahasiswa">Mahasiswa</option>
+                                                <option value="wirausaha">Wirausaha</option>
+                                                <option value="lainnya">Lainnya</option>
+                                            </select>
+
+                                            <!-- Ini input yang akan dikirim ke server -->
+                                            <input type="hidden" name="pekerjaan" id="pekerjaan_final">
+
+                                            <!-- Input text untuk 'lainnya' -->
+                                            <input type="text" id="pekerjaan_lainnya" class="form-control mt-2"
+                                                placeholder="Masukkan pekerjaan lainnya" style="display: none;">
+
                                             <small class="text-danger pekerjaan_error"></small>
                                         </div>
 
@@ -177,6 +212,9 @@
                                                 <option value="SD">SD</option>
                                                 <option value="SMP Sederajat">SMP Sederajat</option>
                                                 <option value="SMA Sederajat">SMA Sederajat</option>
+                                                <option value="D1">D1</option>
+                                                <option value="D2">D2</option>
+                                                <option value="D3">D3</option>
                                                 <option value="S1">S1</option>
                                                 <option value="S2">S2</option>
                                                 <option value="S3">S3</option>
@@ -306,8 +344,48 @@
             });
         });
 
+        const selectPekerjaan = document.getElementById("pekerjaan");
+        const inputLainnya = document.getElementById("pekerjaan_lainnya");
+        const inputFinal = document.getElementById("pekerjaan_final");
+
+        selectPekerjaan.addEventListener("change", function() {
+            if (this.value === "lainnya") {
+                inputLainnya.style.display = "block";
+                inputLainnya.required = true;
+            } else {
+                inputLainnya.style.display = "none";
+                inputLainnya.required = false;
+                inputLainnya.value = "";
+                inputFinal.value = this.value; // langsung isi input hidden
+            }
+        });
+
+        const selectLokasi = document.getElementById("lokasi_pendaftar");
+        const inputLokasi = document.getElementById("lokasi_pendaftar_lainnya");
+        const inputLokasiFinal = document.getElementById("lokasi_pendaftar_final");
+
+        selectLokasi.addEventListener("change", function() {
+            if (this.value === "luar_makassar") {
+                inputLokasi.style.display = "block";
+                inputLokasi.required = true;
+            } else {
+                inputLokasi.style.display = "none";
+                inputLokasi.required = false;
+                inputLokasi.value = "";
+                inputLokasiFinal.value = this.value; // langsung isi input hidden
+            }
+        });
+
         $(document).on('submit', ".form-data", function(e) {
             e.preventDefault();
+
+            if (selectPekerjaan.value === "lainnya") {
+                inputFinal.value = inputLainnya.value;
+            }
+
+            if (selectLokasi.value === "luar_makassar") {
+                inputLokasiFinal.value = inputLokasi.value;
+            }
 
             $.ajaxSetup({
                 headers: {
