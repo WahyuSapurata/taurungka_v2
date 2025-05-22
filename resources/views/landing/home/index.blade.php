@@ -9,37 +9,80 @@
 
         <div class="banner-slider">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="{{ asset('background.png') }}" alt=""
-                        class="scale-bg position-absolute top-0 tw-start-0 z-n1 w-100 h-100 object-fit-cover">
-                    <div class="banner-item z-2 position-relative" style="padding-top: 185px">
-                        <div class="tw-container-1540-px mx-auto tw-px-4">
-                            <div class="position-relative">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <span
-                                                class="splitTextStyleTwo cursor-small text-white fw-bold fst-italic tw-text-xl text-decoration-underline tw-mb-5">Selamat
-                                                Datang Di</span>
-                                            <img class="splitTextStyleOne" src="{{ asset('logo_satu_pemuda_putih.png') }}"
-                                                alt="">
+                @forelse ($event as $hero_event)
+                    <div class="swiper-slide position-relative">
+                        {{-- Background Gambar --}}
+                        <img src="{{ asset('public/event-banner/' . $hero_event->banner) }}" alt=""
+                            class="scale-bg position-absolute top-0 start-0 z-n1 w-100 h-100 object-fit-cover">
 
+                        {{-- Overlay Transparan --}}
+                        <div class="position-absolute top-0 start-0 w-100 h-100 z-0"
+                            style="background: rgba(0, 0, 0, 0.5);"></div>
+
+                        {{-- Konten Banner --}}
+                        <div class="banner-item z-2 position-relative" style="padding-top: 185px">
+                            <div class="tw-container-1540-px mx-auto tw-px-4">
+                                <div class="position-relative">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <span
+                                                    class="splitTextStyleTwo cursor-small text-white fw-bold fst-italic tw-text-xl text-decoration-underline tw-mb-5">
+                                                    Selamat Datang Di
+                                                </span>
+                                                <img class="splitTextStyleOne"
+                                                    src="{{ asset('logo_satu_pemuda_putih.png') }}" alt="">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div
-                                    class="cursor-big bg-blur-one tw-rounded-lg max-w-520-px px-xxl-5 px-lg-4 px-3 py-lg-5 py-4 tw-ms-auto tw-mt-3">
-                                    <span
-                                        class="triangle-shape tw-w-10 tw-h-10 bg-main-600 position-absolute tw-start-0 bottom-0"></span>
-                                    <p class="text-white tw-text-lg line-clamp-3">Website Aplikasi Big Data Kepemudaan Dinas
-                                        Pemuda dan Olahraga Kota Makassar
-                                    </p>
+                                    <div
+                                        class="cursor-big bg-blur-one tw-rounded-lg max-w-520-px px-xxl-5 px-lg-4 px-3 py-lg-5 py-4 tw-ms-auto tw-mt-3">
+                                        <span
+                                            class="triangle-shape tw-w-10 tw-h-10 bg-main-600 position-absolute tw-start-0 bottom-0"></span>
+                                        <p class="text-white tw-text-lg line-clamp-3">
+                                            Website Aplikasi Big Data Kepemudaan Dinas Pemuda dan Olahraga Kota Makassar
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                @empty
+                    <div class="swiper-slide">
+                        <img src="{{ asset('background.png') }}" alt=""
+                            class="scale-bg position-absolute top-0 tw-start-0 z-n1 w-100 h-100 object-fit-cover">
+                        <div class="banner-item z-2 position-relative" style="padding-top: 185px">
+                            <div class="tw-container-1540-px mx-auto tw-px-4">
+                                <div class="position-relative">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <span
+                                                    class="splitTextStyleTwo cursor-small text-white fw-bold fst-italic tw-text-xl text-decoration-underline tw-mb-5">Selamat
+                                                    Datang Di</span>
+                                                <img class="splitTextStyleOne"
+                                                    src="{{ asset('logo_satu_pemuda_putih.png') }}" alt="">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="cursor-big bg-blur-one tw-rounded-lg max-w-520-px px-xxl-5 px-lg-4 px-3 py-lg-5 py-4 tw-ms-auto tw-mt-3">
+                                        <span
+                                            class="triangle-shape tw-w-10 tw-h-10 bg-main-600 position-absolute tw-start-0 bottom-0"></span>
+                                        <p class="text-white tw-text-lg line-clamp-3">Website Aplikasi Big Data Kepemudaan
+                                            Dinas
+                                            Pemuda dan Olahraga Kota Makassar
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforelse
             </div>
 
             <div class="container w-0">

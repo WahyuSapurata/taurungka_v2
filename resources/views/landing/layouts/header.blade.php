@@ -1,14 +1,9 @@
-<!-- ============================ Header Top Start ==================================== -->
+{{-- <!-- ============================ Header Top Start ==================================== -->
 <div class="bg-neutral-50 position-relative z-1 d-sm-block d-none header-top-bg">
     <div class="container tw-container-1554-px">
         <div class="d-flex align-items-center justify-content-between tw-gap-6">
 
             <div class="d-flex align-items-center tw-gap-6">
-                {{-- <div class="cursor-small d-flex align-items-center tw-gap-2 tw-py-205">
-                    <span class="text-main-600 d-flex"><i class="ph-bold ph-map-pin"></i></span>
-                    <span class="text-black xl-tw-text-sm tw-text-xs fw-medium">Jalan Metro Tanjung Bunga, Kota
-                        Makassar</span>
-                </div> --}}
                 <div class="cursor-small d-flex align-items-center tw-gap-2 tw-py-205">
                     <span class="text-main-600 d-flex"><i class="ph-bold ph-phone"></i></span>
                     <a href="mailto:support@example.com"
@@ -33,7 +28,7 @@
         </div>
     </div>
 </div>
-<!-- ============================ Header Top End ==================================== -->
+<!-- ============================ Header Top End ==================================== --> --}}
 
 <!-- ==================== Header Start Here ==================== -->
 <header class="header bg-white transition-all">
@@ -98,7 +93,7 @@
                         </li>
                         <li class="nav-menu__item {{ Request::is('statistik') ? 'active' : '' }}">
                             <a href="{{ route('statistik') }}"
-                                class="nav-menu__link hover--translate-y-1 text-main-two-600 tw-py-9 fw-medium w-100">Statistik
+                                class="nav-menu__link hover--translate-y-1 text-main-two-600 tw-py-9 fw-medium w-100">IPP
                             </a>
                         </li>
                         <li class="nav-menu__item {{ Request::is('kontak') ? 'active' : '' }}">

@@ -53,7 +53,7 @@
                 </li>
                 <li class="nav-menu__item {{ Request::is('statistik') ? 'active' : '' }}">
                     <a href="{{ route('statistik') }}"
-                        class="nav-menu__link hover--translate-y-1 text-main-two-600 tw-py-9 fw-medium w-100">Statistik
+                        class="nav-menu__link hover--translate-y-1 text-main-two-600 tw-py-9 fw-medium w-100">IPP
                     </a>
                 </li>
                 <li class="nav-menu__item {{ Request::is('kontak') ? 'active' : '' }}">
