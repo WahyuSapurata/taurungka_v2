@@ -2,7 +2,7 @@
     use Carbon\Carbon;
     Carbon::setLocale('id');
 
-    // $formattedDate = Carbon::parse($event->created_at)->diffForHumans();
+    $formattedDate = Carbon::parse($event->created_at)->diffForHumans();
 
     // // Pisahkan tanggal awal dan akhir
     // [$startDate, $endDate] = explode(' to ', $event->tanggal_event);
