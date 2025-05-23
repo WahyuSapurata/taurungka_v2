@@ -35,12 +35,20 @@
                     <div class="row row-gap-4">
                         @forelse ($event as $item)
                             @php
-                                // Pisahkan tanggal awal dan akhir
-                                [$startDate, $endDate] = explode(' to ', $item->tanggal_event);
+                                $startDateFormatted = '';
+                                $endDateFormatted = '';
 
-                                // Format ulang
-                                $startDateFormatted = Carbon::parse($startDate)->translatedFormat('d M');
-                                $endDateFormatted = Carbon::parse($endDate)->translatedFormat('d M Y');
+                                if (!empty($item->tanggal_event) && str_contains($item->tanggal_event, ' to ')) {
+                                    [$startDate, $endDate] = explode(' to ', $item->tanggal_event);
+
+                                    if (!empty($startDate)) {
+                                        $startDateFormatted = Carbon::parse($startDate)->translatedFormat('d M');
+                                    }
+
+                                    if (!empty($endDate)) {
+                                        $endDateFormatted = Carbon::parse($endDate)->translatedFormat('d M Y');
+                                    }
+                                }
 
                                 $formattedDate = Carbon::parse($item->created_at)->diffForHumans();
 
