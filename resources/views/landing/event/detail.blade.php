@@ -2,14 +2,29 @@
     use Carbon\Carbon;
     Carbon::setLocale('id');
 
-    $formattedDate = Carbon::parse($event->created_at)->diffForHumans();
+    // $formattedDate = Carbon::parse($event->created_at)->diffForHumans();
 
-    // Pisahkan tanggal awal dan akhir
-    [$startDate, $endDate] = explode(' to ', $event->tanggal_event);
+    // // Pisahkan tanggal awal dan akhir
+    // [$startDate, $endDate] = explode(' to ', $event->tanggal_event);
 
-    // Format ulang
-    $startDateFormatted = Carbon::parse($startDate)->translatedFormat('d M');
-    $endDateFormatted = Carbon::parse($endDate)->translatedFormat('d M Y');
+    // // Format ulang
+    // $startDateFormatted = Carbon::parse($startDate)->translatedFormat('d M');
+    // $endDateFormatted = Carbon::parse($endDate)->translatedFormat('d M Y');
+
+    $startDateFormatted = '';
+    $endDateFormatted = '';
+
+    if (!empty($event->tanggal_event) && str_contains($event->tanggal_event, ' to ')) {
+        [$startDate, $endDate] = explode(' to ', $event->tanggal_event);
+
+        if (!empty($startDate)) {
+            $startDateFormatted = Carbon::parse($startDate)->translatedFormat('d M Y');
+        }
+
+        if (!empty($endDate)) {
+            $endDateFormatted = Carbon::parse($endDate)->translatedFormat('d M Y');
+        }
+    }
 @endphp
 @extends('landing.layouts.layout')
 @section('content')
