@@ -130,16 +130,20 @@ class Landing extends BaseController
             $event_daftar = null; // Atur nilai default jika tidak ada user yang login
         }
 
-        $user_event = User::where('uuid', auth()->user()->uuid)->first();
-        if ($user_event) {
-            $usia_user = Carbon::parse($user_event->tanggal_lahir)->age;
-            if ($event && $event->validasi_umur) {
-                // Pecah range usia dari "min-max", misalnya "18-25"
-                [$minUsia, $maxUsia] = explode('-', $event->validasi_umur);
+        if (auth()->check()) {
+            $user_event = User::where('uuid', auth()->user()->uuid)->first();
+            if ($user_event) {
+                $usia_user = Carbon::parse($user_event->tanggal_lahir)->age;
+                if ($event && $event->validasi_umur) {
+                    // Pecah range usia dari "min-max", misalnya "18-25"
+                    [$minUsia, $maxUsia] = explode('-', $event->validasi_umur);
 
-                // Cek apakah usia user masuk dalam rentang
-                $bolehDaftar = $usia_user >= (int)$minUsia && $usia_user <= (int)$maxUsia;
+                    // Cek apakah usia user masuk dalam rentang
+                    $bolehDaftar = $usia_user >= (int)$minUsia && $usia_user <= (int)$maxUsia;
+                }
             }
+        } else {
+            $bolehDaftar = false; // Atur nilai default jika tidak ada user yang login
         }
 
         $sudahDaftar = DB::table('pendaftars')
