@@ -62,6 +62,8 @@ class Landing extends BaseController
                 'events.status_daftar',
                 'events.dukumen',
                 'events.banner',
+                'events.validasi_umur',
+                'events.validasi_event',
                 'events.created_at',
                 'events.updated_at'
             )
