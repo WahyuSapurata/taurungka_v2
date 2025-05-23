@@ -179,10 +179,25 @@
                             <div class="d-flex flex-column tw-gap-8">
                                 @forelse ($event_populer as $item_populer)
                                     @php
-                                        [$startDate, $endDate] = explode(' to ', $item_populer->tanggal_event);
+                                        $startDateFormatted = '';
+                                        $endDateFormatted = '';
 
-                                        // Format ulang
-                                        $startDateFormatted = Carbon::parse($startDate)->translatedFormat('d M Y');
+                                        if (
+                                            !empty($item_terbaru->tanggal_event) &&
+                                            str_contains($item_terbaru->tanggal_event, ' to ')
+                                        ) {
+                                            [$startDate, $endDate] = explode(' to ', $item_terbaru->tanggal_event);
+
+                                            if (!empty($startDate)) {
+                                                $startDateFormatted = Carbon::parse($startDate)->translatedFormat(
+                                                    'd M Y',
+                                                );
+                                            }
+
+                                            if (!empty($endDate)) {
+                                                $endDateFormatted = Carbon::parse($endDate)->translatedFormat('d M Y');
+                                            }
+                                        }
                                     @endphp
                                     <div class="d-flex align-items-center tw-gap-6">
                                         <a href="{{ route('event-detail', ['params' => $item_populer->uuid]) }}"
@@ -233,10 +248,25 @@
                             <div class="d-flex flex-column tw-gap-8">
                                 @forelse ($event_terbaru as $item_terbaru)
                                     @php
-                                        [$startDate, $endDate] = explode(' to ', $item_terbaru->tanggal_event);
+                                        $startDateFormatted = '';
+                                        $endDateFormatted = '';
 
-                                        // Format ulang
-                                        $startDateFormatted = Carbon::parse($startDate)->translatedFormat('d M Y');
+                                        if (
+                                            !empty($item_terbaru->tanggal_event) &&
+                                            str_contains($item_terbaru->tanggal_event, ' to ')
+                                        ) {
+                                            [$startDate, $endDate] = explode(' to ', $item_terbaru->tanggal_event);
+
+                                            if (!empty($startDate)) {
+                                                $startDateFormatted = Carbon::parse($startDate)->translatedFormat(
+                                                    'd M Y',
+                                                );
+                                            }
+
+                                            if (!empty($endDate)) {
+                                                $endDateFormatted = Carbon::parse($endDate)->translatedFormat('d M Y');
+                                            }
+                                        }
                                     @endphp
                                     <div class="d-flex align-items-center tw-gap-6">
                                         <a href="{{ route('event-detail', ['params' => $item_terbaru->uuid]) }}"
