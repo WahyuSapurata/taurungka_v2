@@ -146,20 +146,24 @@ class Landing extends BaseController
             $bolehDaftar = false; // Atur nilai default jika tidak ada user yang login
         }
 
-        $sudahDaftar = DB::table('pendaftars')
-            ->where('uuid_user', auth()->user()->uuid)
-            ->first();
-
-        $status = false;
-
-        if ($sudahDaftar) {
-            $eventTerkait = DB::table('events')
-                ->where('uuid', $sudahDaftar->uuid_event)
+        if (auth()->check()) {
+            $sudahDaftar = DB::table('pendaftars')
+                ->where('uuid_user', auth()->user()->uuid)
                 ->first();
 
-            if ($eventTerkait && $eventTerkait->validasi_event === $event->validasi_event) {
-                $status = true;
+            $status = false;
+
+            if ($sudahDaftar) {
+                $eventTerkait = DB::table('events')
+                    ->where('uuid', $sudahDaftar->uuid_event)
+                    ->first();
+
+                if ($eventTerkait && $eventTerkait->validasi_event === $event->validasi_event) {
+                    $status = true;
+                }
             }
+        } else {
+            $status = false; // Atur nilai default jika tidak ada user yang login
         }
         return view('landing.event.detail', compact('event', 'module', 'event_terbaru', 'event_populer', 'event_daftar', 'bolehDaftar', 'status'));
     }
