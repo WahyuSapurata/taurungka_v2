@@ -30,38 +30,82 @@
     <link rel="stylesheet" href="{{ asset('assets-landing/css/style.css') }}">
     <!-- Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255 255 255 / 94%);
+            /* Ubah opacity latar belakang */
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            /* Tambahkan efek bayangan */
+        }
+
+        #loader .spinner {
+            width: 200px;
+            /* Sesuaikan lebar spinner sesuai kebutuhan */
+            transform-origin: center;
+            /* Agar rotasi terjadi di tengah */
+            animation: shake 0.5s infinite alternate;
+            /* Tambahkan animasi shake */
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .custom-loader {
+            width: 50px;
+            height: 24px;
+            background:
+                radial-gradient(circle closest-side, #c93e10 90%, #0000) 0% 50%,
+                radial-gradient(circle closest-side, #e44545 90%, #0000) 50% 50%,
+                radial-gradient(circle closest-side, #c93e10 90%, #0000) 100% 50%;
+            background-size: calc(100%/3) 12px;
+            background-repeat: no-repeat;
+            animation: d3 1s infinite linear;
+        }
+
+        @keyframes d3 {
+            20% {
+                background-position: 0% 0%, 50% 50%, 100% 50%
+            }
+
+            40% {
+                background-position: 0% 100%, 50% 0%, 100% 50%
+            }
+
+            60% {
+                background-position: 0% 50%, 50% 100%, 100% 0%
+            }
+
+            80% {
+                background-position: 0% 50%, 50% 50%, 100% 100%
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <!--==================== Preloader Start ====================-->
-    <div
-        class="preloader bg-white tw-h-screen justify-content-center align-items-center tw-z-999 position-fixed top-0 tw-start-0 w-100 h-100">
-        <div class="car-road">
-            <div class="car">
-                <div class="car-top">
-                    <div class="window">
-                    </div>
-                </div>
-                <div class="car-base">
-                </div>
-                <div class="wheel-left wheel">
-                    <div class="wheel-spike">
-                    </div>
-                    <div class="wheel-center">
-                    </div>
-                </div>
-                <div class="wheel-right wheel">
-                    <div class="wheel-spike">
-                    </div>
-                    <div class="wheel-center">
-                    </div>
-                </div>
-                <div class="head-light"></div>
-            </div>
-            <div class="road">
-            </div>
-        </div>
+    <div id="loader">
+        <img class="spinner" loading="lazy" src="{{ asset('preloader.png') }}" alt="Spinner">
+        <div class="custom-loader"></div>
     </div>
     <!--==================== Preloader End ====================-->
 
@@ -126,6 +170,15 @@
     <script src="{{ asset('assets-landing/js/main.js') }}"></script>
     <!-- Select2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        document.onreadystatechange = function() {
+            if (document.readyState === "complete") {
+                // Ketika semua proses load tampilan selesai, sembunyikan loader
+                document.getElementById('loader').style.display = 'none';
+            }
+        };
+    </script>
 
     @yield('script')
 

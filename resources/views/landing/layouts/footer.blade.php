@@ -85,7 +85,8 @@
          <div class="border-top border-dashed border-neutral-1100 border-0 tw-py-8">
              <div class="container container-two">
                  <div class="d-flex align-items-center justify-content-center tw-gap-6 flex-wrap">
-                     <p class="text--white text-line-1 fw-normal cursor-small"> &copy; 2024 Taurungka
+                     <p class="text--white text-line-1 fw-normal cursor-small"> &copy; {{ now()->format('Y') }}
+                         Taurungka
                      </p>
                  </div>
              </div>

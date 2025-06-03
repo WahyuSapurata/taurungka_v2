@@ -85,11 +85,11 @@
                 @endforelse
             </div>
 
-            <div class="container w-0">
+            {{-- <div class="container w-0">
                 <div class="position-relative w-0">
                     <div class="pagination-style-one text-start swiper-pagination banner-pagination cursor-big"></div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <!-- ============================ Banner section End ======================================= -->
