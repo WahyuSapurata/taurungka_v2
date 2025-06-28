@@ -51,8 +51,8 @@
                         class="nav-menu__link hover--translate-y-1 text-main-two-600 tw-py-9 fw-medium w-100">
                         Event</a>
                 </li>
-                <li class="nav-menu__item {{ Request::is('statistik') ? 'active' : '' }}">
-                    <a href="{{ route('statistik') }}"
+                <li class="nav-menu__item {{ Request::is('ipp') ? 'active' : '' }}">
+                    <a href="{{ route('ipp') }}"
                         class="nav-menu__link hover--translate-y-1 text-main-two-600 tw-py-9 fw-medium w-100">IPP
                     </a>
                 </li>

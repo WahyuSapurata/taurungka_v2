@@ -35,7 +35,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/absensi/{params}', 'Landing@absensi')->name('absensi');
     Route::post('/absensi-confirm/{params}', 'Landing@confirmAbsensi')->name('absensi-confirm');
 
-    Route::get('/statistik', 'Landing@statistik_event')->name('statistik');
+    Route::get('/ipp', 'Landing@statistik_event')->name('ipp');
     Route::get('/get-statistik/{params?}', 'Landing@get_statistik')->name('get-statistik');
     Route::get('/get-statistik-jeniskelamin/{params?}', 'Landing@get_statistik_jeniskelamin')->name('get-statistik-jeniskelamin');
 
