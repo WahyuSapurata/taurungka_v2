@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Absensi;
 use App\Models\DataMakassar;
 use App\Models\Event;
+use App\Models\Ipp;
 use App\Models\Like;
 use App\Models\Pendaftar;
+use App\Models\Proyeksi;
 use App\Models\User;
 use App\Models\View;
 use Illuminate\Http\Request;
@@ -264,9 +266,31 @@ class Landing extends BaseController
 
     public function statistik_event()
     {
-        $module = 'Statistik Event';
-        $event = Event::all();
-        return view('landing.statistik.index', compact('module', 'event'));
+        $module = 'IPP';
+        $data = Ipp::where('tahun', now()->format('Y'))->get();
+
+        $chartData = [];
+        $total = 0;
+        $count = 0;
+
+        foreach ($data as $item) {
+            $nilai = collect($item->indikator)->avg();
+            $chartData[] = [
+                'name' => $item->domain,
+                'y' => round($nilai, 2),
+            ];
+            $total += $nilai;
+            $count++;
+        }
+
+        $avgIpp = $count ? round($total / $count, 2) : 0;
+
+        $proyeksi = Proyeksi::orderBy('tahun')->get();
+
+        $tahun = $proyeksi->pluck('tahun');
+        $nilaiProyeksi = $proyeksi->pluck('proyeksi')->map(fn($v) => (float) $v);
+        $nilaiCapaian = $proyeksi->pluck('capaian')->map(fn($v) => (float) $v);
+        return view('landing.statistik.index', compact('module', 'chartData', 'avgIpp', 'tahun', 'nilaiProyeksi', 'nilaiCapaian'));
     }
 
     public function get_statistik($params = null)

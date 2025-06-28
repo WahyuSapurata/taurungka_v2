@@ -99,6 +99,46 @@
                     </a>
                 </div>
                 <!--end::Menu item-->
+
+                <!--begin::Menu item-->
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($path[1]) && $path[1] === 'ipp' ? 'active' : '' }}"
+                        href="{{ route('admin.ipp') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                {!! isset($path[1]) && $path[1] === 'ipp'
+                                    ? '<i class="fas fa-people-carry" style="color: #F4BE2A; font-size: 16px"></i>'
+                                    : '<i class="fas fa-people-carry" style="color: #FFFFFF; font-size: 16px"></i>' !!}
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title"
+                            style="{{ isset($path[1]) && $path[1] === 'ipp' ? 'color: #F4BE2A' : 'color: #FFFFFF' }}">Manajemenet
+                            IPP</span>
+                    </a>
+                </div>
+                <!--end::Menu item-->
+
+                <!--begin::Menu item-->
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($path[1]) && $path[1] === 'proyeksi' ? 'active' : '' }}"
+                        href="{{ route('admin.proyeksi') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                {!! isset($path[1]) && $path[1] === 'proyeksi'
+                                    ? '<i class="fas fa-project-diagram" style="color: #F4BE2A; font-size: 16px"></i>'
+                                    : '<i class="fas fa-project-diagram" style="color: #FFFFFF; font-size: 16px"></i>' !!}
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title"
+                            style="{{ isset($path[1]) && $path[1] === 'proyeksi' ? 'color: #F4BE2A' : 'color: #FFFFFF' }}">Proyeksi
+                            dan Capaian</span>
+                    </a>
+                </div>
+                <!--end::Menu item-->
             @endif
 
             {{-- <div class="menu-item">

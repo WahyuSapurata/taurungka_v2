@@ -66,6 +66,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::delete('/delete-event/{params}', 'EventController@delete')->name('delete-event');
         Route::get('/button-event/{params}', 'EventController@update_tombol')->name('button-event');
         Route::get('/button-feedback/{params}', 'EventController@update_tombol_feedback')->name('button-feedback');
+        Route::get('/button-dokumen/{params}', 'EventController@update_tombol_dokumen')->name('button-dokumen');
 
         Route::get('/list-pendaftar/{params}', 'EventController@list_pendaftar')->name('list-pendaftar');
         Route::get('/get-list-pendaftar/{params}', 'EventController@get_list_pendaftar')->name('get-list-pendaftar');
@@ -87,6 +88,21 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::delete('/delete-daftarmakassar/{params}', 'DataMakassarController@delete')->name('delete-daftarmakassar');
         Route::get('/moveup-daftarmakassar/{uuid}', 'DataMakassarController@moveUp')->name('moveup-daftarmakassar');
         Route::get('/movedown-daftarmakassar/{uuid}', 'DataMakassarController@moveDown')->name('movedown-daftarmakassar');
+
+        Route::get('/ipp', 'IppController@index')->name('ipp');
+        Route::get('/get-ipp', 'IppController@get')->name('get-ipp');
+        Route::get('/add-ipp', 'IppController@add')->name('add-ipp');
+        Route::post('/store-ipp', 'IppController@store')->name('store-ipp');
+        Route::get('/edit-ipp/{params}', 'IppController@edit')->name('edit-ipp');
+        Route::post('/update-ipp/{params}', 'IppController@update')->name('update-ipp');
+        Route::delete('/delete-ipp/{params}', 'IppController@delete')->name('delete-ipp');
+
+        Route::get('/proyeksi', 'ProyeksiController@index')->name('proyeksi');
+        Route::get('/get-proyeksi', 'ProyeksiController@get')->name('get-proyeksi');
+        Route::post('/store-proyeksi', 'ProyeksiController@store')->name('store-proyeksi');
+        Route::get('/show-proyeksi/{params}', 'ProyeksiController@show')->name('show-proyeksi');
+        Route::post('/update-proyeksi/{params}', 'ProyeksiController@update')->name('update-proyeksi');
+        Route::delete('/delete-proyeksi/{params}', 'ProyeksiController@delete')->name('delete-proyeksi');
     });
 
     Route::get('/logout', 'Auth@logout')->name('logout');

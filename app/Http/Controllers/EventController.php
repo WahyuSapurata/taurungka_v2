@@ -73,6 +73,7 @@ class EventController extends BaseController
             $data->validasi_event = $storeEventRequest->validasi_event;
             $data->link_feedback = $storeEventRequest->link_feedback;
             $data->status_feedback = false;
+            $data->status_dukumen = false;
             $data->save();
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), $e->getMessage(), 400);
@@ -183,6 +184,22 @@ class EventController extends BaseController
                 $data->status_feedback = false;
             } elseif ($data->status_feedback == false) {
                 $data->status_feedback = true;
+            }
+            $data->save();
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(), $e->getMessage(), 400);
+        }
+        return $this->sendResponse($data, 'Update event success');
+    }
+
+    public function update_tombol_dokumen($params)
+    {
+        $data = Event::where('uuid', $params)->first();
+        try {
+            if ($data->status_dukumen == true) {
+                $data->status_dukumen = false;
+            } elseif ($data->status_dukumen == false) {
+                $data->status_dukumen = true;
             }
             $data->save();
         } catch (\Exception $e) {

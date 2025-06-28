@@ -39,6 +39,7 @@ class RegisterRequest extends FormRequest
             'kelurahan' => 'required',
             'pekerjaan' => 'required',
             'pedidikan_terakhir' => 'required',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
         ];
     }
 

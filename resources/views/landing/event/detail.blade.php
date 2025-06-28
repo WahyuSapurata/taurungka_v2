@@ -186,7 +186,7 @@
                                     @endif
                                 @endif
                             @endif
-                            @if ($event->dukumen)
+                            @if ($event->dukumen && $event->status_dukumen)
                                 <div class="d-flex tw-gap-11 flex-wrap d-lg-block mt-4 d-none">
                                     <a href="{{ asset('public/event-document/' . $event->dukumen) }}" target="_blank"
                                         class="cursor-small btn btn-main hover-style-two button--stroke tw-py-405 d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2"

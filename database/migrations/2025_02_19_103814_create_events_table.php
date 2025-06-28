@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('validasi_event')->nullable();
             $table->string('link_feedback')->nullable();
             $table->string('status_feedback')->nullable();
+            $table->string('status_dukumen')->nullable();
             $table->timestamps();
         });
     }

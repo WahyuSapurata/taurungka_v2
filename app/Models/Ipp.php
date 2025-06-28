@@ -6,28 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class Event extends Model
+class Ipp extends Model
 {
     use HasFactory;
 
-    protected $table = 'events';
+    protected $table = 'ipps';
     protected $primaryKey = 'id';
     protected $fillable = [
         'uuid',
-        'uuid_user',
-        'nama_event',
-        'tanggal_event',
-        'kouta_kegiatan',
-        'konten_kegiatan',
-        'tempat',
-        'status_daftar',
-        'dukumen',
-        'banner',
-        'validasi_umur',
-        'validasi_event',
-        'link_feedback',
-        'status_feedback',
-        'status_dukumen',
+        'tahun',
+        'domain',
+        'indikator',
+    ];
+
+    protected $casts = [
+        'indikator' => 'array',
     ];
 
     protected static function boot()

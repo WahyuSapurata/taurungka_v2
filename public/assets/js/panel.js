@@ -804,6 +804,15 @@ class Control {
         $(element).html(html);
     }
 
+    push_select_data(data, element) {
+        let html = "<option></option>";
+        $.each(data, function (x, y) {
+            const selected = y.selected ? "selected" : "";
+            html += `<option value="${y.value ?? y.text}" ${selected}>${y.text}</option>`;
+        });
+        $(element).html(html);
+    }
+
     dropdownCheckbox(data, element) {
         const this_ = this; // Simpan referensi objek 'this' di dalam variabel
         if (!this.selectedCheckboxValues.length && data && data.length > 0) {
