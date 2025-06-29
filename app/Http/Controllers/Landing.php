@@ -68,6 +68,7 @@ class Landing extends BaseController
                 'events.validasi_event',
                 'events.link_feedback',
                 'events.status_feedback',
+                'events.status_dukumen',
                 'events.created_at',
                 'events.updated_at'
             )
@@ -117,6 +118,7 @@ class Landing extends BaseController
                 'events.validasi_event',
                 'events.link_feedback',
                 'events.status_feedback',
+                'events.status_dukumen',
                 'events.created_at',
                 'events.updated_at'
             )
@@ -215,6 +217,7 @@ class Landing extends BaseController
                 'events.validasi_event',
                 'events.link_feedback',
                 'events.status_feedback',
+                'events.status_dukumen',
                 'events.created_at',
                 'events.updated_at'
             )
