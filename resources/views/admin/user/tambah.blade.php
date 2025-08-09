@@ -395,7 +395,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'admin/store-user',
+                url: "{{ url('admin/store-user') }}",
                 data: new FormData($(".form-data")[0]),
                 contentType: false,
                 processData: false,
@@ -410,7 +410,7 @@
                                 timer: 1500,
                             })
                             .then(function() {
-                                window.location.href = 'admin/user';
+                                window.location.href = "{{ url('admin/user') }}";
                             });
                     } else {
                         $("form")[0].reset();

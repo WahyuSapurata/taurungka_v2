@@ -249,7 +249,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'admin/update-event/' + lastPart,
+                url: "{{ url('admin/update-event/') }}" + lastPart,
                 data: new FormData($(".form-data")[0]),
                 contentType: false,
                 processData: false,
@@ -264,7 +264,7 @@
                                 timer: 1500,
                             })
                             .then(function() {
-                                window.location.href = 'admin/event';
+                                window.location.href = "{{ url('admin/event') }}";
                             });
                     } else {
                         $("form")[0].reset();

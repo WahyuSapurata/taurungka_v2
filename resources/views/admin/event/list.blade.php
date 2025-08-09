@@ -108,7 +108,7 @@
                     [0, 'asc']
                 ],
                 processing: true,
-                ajax: 'admin/get-list-pendaftar/' + lastPart,
+                ajax: "{{ url('admin/get-list-pendaftar/') }}" + lastPart,
                 columns: [{
                     data: null,
                     render: function(data, type, row, meta) {

@@ -55,17 +55,17 @@
         let control = new Control();
 
         $(document).on('click', '#button-side-form', function() {
-            window.location.href = 'admin/add-ipp';
+            window.location.href = "{{ url('admin/add-ipp') }}";
         })
 
         $(document).on('click', '.button-update', function(e) {
             e.preventDefault();
-            window.location.href = 'admin/edit-ipp/' + $(this).attr('data-uuid');
+            window.location.href = "{{ url('admin/edit-ipp/') }}" + $(this).attr('data-uuid');
         })
 
         $(document).on('click', '.button-delete', function(e) {
             e.preventDefault();
-            let url = 'admin/delete-ipp/' + $(this).attr('data-uuid');
+            let url = "{{ url('admin/delete-ipp/') }}" + $(this).attr('data-uuid');
             let label = $(this).attr('data-label');
             control.ajaxDelete(url, label)
         })
@@ -89,7 +89,7 @@
                     [0, 'asc']
                 ],
                 processing: true,
-                ajax: 'admin/get-ipp',
+                ajax: "{{ url('admin/get-ipp') }}",
                 columns: [{
                     data: null,
                     render: function(data, type, row, meta) {

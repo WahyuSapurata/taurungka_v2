@@ -165,12 +165,12 @@
             e.preventDefault();
             let type = $(this).attr('data-type');
             if (type == 'add') {
-                control.submitFormMultipartData('admin/store-proyeksi', 'Tambah',
+                control.submitFormMultipartData("{{ url('admin/store-proyeksi') }}", 'Tambah',
                     'Proyeksi dan Hasil Capaian',
                     'POST');
             } else {
                 let uuid = $("input[name='uuid']").val();
-                control.submitFormMultipartData('admin/update-proyeksi/' + uuid,
+                control.submitFormMultipartData("{{ url('admin/update-proyeksi/') }}" + uuid,
                     'Update',
                     'Proyeksi dan Hasil Capaian', 'POST');
             }
@@ -178,13 +178,13 @@
 
         $(document).on('click', '.button-update', function(e) {
             e.preventDefault();
-            let url = 'admin/show-proyeksi/' + $(this).attr('data-uuid');
+            let url = "{{ url('admin/show-proyeksi/') }}" + $(this).attr('data-uuid');
             control.overlay_form('Update', 'Proyeksi dan Hasil Capaian', url);
         })
 
         $(document).on('click', '.button-delete', function(e) {
             e.preventDefault();
-            let url = 'admin/delete-proyeksi/' + $(this).attr('data-uuid');
+            let url = "{{ url('admin/delete-proyeksi/') }}" + $(this).attr('data-uuid');
             let label = $(this).attr('data-label');
             control.ajaxDelete(url, label)
         })
@@ -210,7 +210,7 @@
                     [0, 'asc']
                 ],
                 processing: true,
-                ajax: 'admin/get-proyeksi',
+                ajax: "{{ url('admin/get-proyeksi') }}",
                 columns: [{
                         data: null,
                         render: function(data, type, row, meta) {

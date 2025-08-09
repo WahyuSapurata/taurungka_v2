@@ -55,34 +55,34 @@
         let control = new Control();
 
         $(document).on('click', '#button-side-form', function() {
-            window.location.href = 'admin/add-event';
+            window.location.href = "{{ url('admin/add-event') }}";
         })
 
         $(document).on('click', '.button-update', function(e) {
             e.preventDefault();
-            window.location.href = 'admin/edit-event/' + $(this).attr('data-uuid');
+            window.location.href = "{{ url('admin/edit-event/') }}" + $(this).attr('data-uuid');
         })
 
         $(document).on('click', '.button-delete', function(e) {
             e.preventDefault();
-            let url = 'admin/delete-event/' + $(this).attr('data-uuid');
+            let url = "{{ url('admin/delete-event/') }}" + $(this).attr('data-uuid');
             let label = $(this).attr('data-label');
             control.ajaxDelete(url, label)
         })
 
         $(document).on('click', '.button-list-pendaftar', function(e) {
             e.preventDefault();
-            window.location.href = 'admin/list-pendaftar/' + $(this).attr('data-uuid');
+            window.location.href = "{{ url('admin/list-pendaftar/') }}" + $(this).attr('data-uuid');
         })
 
         $(document).on('click', '.button-qrcode', function(e) {
             e.preventDefault();
-            window.open('admin/generateqrcode/' + $(this).attr('data-uuid'), '_blank');
+            window.open("{{ url('admin/generateqrcode/') }}" + $(this).attr('data-uuid'), '_blank');
         })
 
         $(document).on('click', '.button-list-absen', function(e) {
             e.preventDefault();
-            window.location.href = 'admin/list-absen/' + $(this).attr('data-uuid');
+            window.location.href = "{{ url('admin/list-absen/') }}" + $(this).attr('data-uuid');
         })
 
         $(document).on('click', '.button-daftar', function(e) {
@@ -91,7 +91,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: 'admin/button-event/' + $(this).attr('data-uuid'),
+                url: "{{ url('admin/button-event/') }}" + $(this).attr('data-uuid'),
                 contentType: false,
                 processData: false,
                 success: function(response) {
@@ -126,7 +126,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: 'admin/button-feedback/' + $(this).attr('data-uuid'),
+                url: "{{ url('admin/button-feedback/') }}" + $(this).attr('data-uuid'),
                 contentType: false,
                 processData: false,
                 success: function(response) {
@@ -161,7 +161,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: 'admin/button-dokumen/' + $(this).attr('data-uuid'),
+                url: "{{ url('admin/button-dokumen/') }}" + $(this).attr('data-uuid'),
                 contentType: false,
                 processData: false,
                 success: function(response) {
@@ -209,7 +209,7 @@
                     [0, 'asc']
                 ],
                 processing: true,
-                ajax: 'admin/get-event',
+                ajax: "{{ url('admin/get-event') }}",
                 columns: [{
                     data: null,
                     render: function(data, type, row, meta) {

@@ -109,7 +109,7 @@
                     [0, 'asc']
                 ],
                 processing: true,
-                ajax: 'admin/get-list-absen/' + lastPart,
+                ajax: "{{ url('admin/get-list-absen/') }}" + lastPart,
                 columns: [{
                         data: null,
                         render: function(data, type, row, meta) {
