@@ -3,7 +3,7 @@
     $role = auth()->user()->role;
 
     $dashboardRoutes = [
-        'admin' => 'admin.dashboard-admin',
+        'admin' => '/admin.dashboard-admin',
     ];
 
     $isActive = in_array($role, array_keys($dashboardRoutes)) && isset($path[1]) && $path[1] === 'dashboard-' . $role;
