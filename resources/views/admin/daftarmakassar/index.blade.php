@@ -54,17 +54,17 @@
         let control = new Control();
 
         $(document).on('click', '#button-side-form', function() {
-            window.location.href = 'admin/add-daftarmakassar';
+            window.location.href = '/admin/add-daftarmakassar';
         })
 
         $(document).on('click', '.button-update', function(e) {
             e.preventDefault();
-            window.location.href = 'admin/edit-daftarmakassar/' + $(this).attr('data-uuid');
+            window.location.href = '/admin/edit-daftarmakassar/' + $(this).attr('data-uuid');
         })
 
         $(document).on('click', '.button-delete', function(e) {
             e.preventDefault();
-            let url = 'admin/delete-daftarmakassar/' + $(this).attr('data-uuid');
+            let url = '/admin/delete-daftarmakassar/' + $(this).attr('data-uuid');
             let label = $(this).attr('data-label');
             control.ajaxDelete(url, label)
         })
@@ -74,7 +74,7 @@
             let uuid = $(this).attr("data-uuid");
 
             $.ajax({
-                url: `admin/moveup-daftarmakassar/${uuid}`,
+                url: `/admin/moveup-daftarmakassar/${uuid}`,
                 type: "GET",
                 success: function(response) {
                     swal
@@ -99,7 +99,7 @@
             let uuid = $(this).attr("data-uuid");
 
             $.ajax({
-                url: `admin/movedown-daftarmakassar/${uuid}`,
+                url: `/admin/movedown-daftarmakassar/${uuid}`,
                 type: "GET",
                 success: function(response) {
                     swal
@@ -138,7 +138,7 @@
                     [0, 'asc']
                 ],
                 processing: true,
-                ajax: 'admin/get-daftarmakassar',
+                ajax: '/admin/get-daftarmakassar',
                 columns: [{
                     data: null,
                     render: function(data, type, row, meta) {

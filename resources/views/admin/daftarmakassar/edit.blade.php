@@ -148,7 +148,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'admin/update-daftarmakassar/' + lastPart,
+                url: '/admin/update-daftarmakassar/' + lastPart,
                 data: new FormData($(".form-data")[0]),
                 contentType: false,
                 processData: false,
@@ -163,7 +163,7 @@
                                 timer: 1500,
                             })
                             .then(function() {
-                                window.location.href = 'admin/daftarmakassar';
+                                window.location.href = '/admin/daftarmakassar';
                             });
                     } else {
                         $("form")[0].reset();
