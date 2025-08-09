@@ -46,7 +46,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/registrasi-user', 'Register@register')->name('registrasi-user');
     });
 
-    Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => '/admin.'], function () {
         Route::get('dashboard-admin', 'Dashboard@dashboard_admin')->name('dashboard-admin');
 
         Route::get('user', 'DataUser@index')->name('user');
