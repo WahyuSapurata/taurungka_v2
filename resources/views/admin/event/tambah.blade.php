@@ -232,7 +232,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/admin/store-event',
+                url: 'admin/store-event',
                 data: new FormData($(".form-data")[0]),
                 contentType: false,
                 processData: false,
@@ -247,7 +247,7 @@
                                 timer: 1500,
                             })
                             .then(function() {
-                                window.location.href = '/admin/event';
+                                window.location.href = 'admin/event';
                             });
                     } else {
                         $("form")[0].reset();

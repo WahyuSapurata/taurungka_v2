@@ -74,17 +74,17 @@
         let control = new Control();
 
         $(document).on('click', '#button-side-form', function() {
-            window.location.href = '/admin/add-user';
+            window.location.href = 'admin/add-user';
         })
 
         $(document).on('click', '.button-update', function(e) {
             e.preventDefault();
-            window.location.href = '/admin/edit-user/' + $(this).attr('data-uuid');
+            window.location.href = 'admin/edit-user/' + $(this).attr('data-uuid');
         })
 
         $(document).on('click', '.button-delete', function(e) {
             e.preventDefault();
-            let url = '/admin/delete-user/' + $(this).attr('data-uuid');
+            let url = 'admin/delete-user/' + $(this).attr('data-uuid');
             let label = $(this).attr('data-label');
             control.ajaxDelete(url, label)
         })
@@ -111,7 +111,7 @@
                 ],
                 processing: true,
                 ajax: {
-                    url: '/admin/get-user',
+                    url: 'admin/get-user',
                     type: 'GET',
                     data: function(d) {
                         d.usia = usia;

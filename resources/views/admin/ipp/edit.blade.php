@@ -171,7 +171,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/admin/update-ipp/' + lastPart,
+                url: 'admin/update-ipp/' + lastPart,
                 data: new FormData($(".form-data")[0]),
                 contentType: false,
                 processData: false,
@@ -186,7 +186,7 @@
                                 timer: 1500,
                             })
                             .then(function() {
-                                window.location.href = '/admin/ipp';
+                                window.location.href = 'admin/ipp';
                             });
                     } else {
                         $("form")[0].reset();

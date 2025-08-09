@@ -108,7 +108,7 @@
                     [0, 'asc']
                 ],
                 processing: true,
-                ajax: '/admin/get-list-pendaftar/' + lastPart,
+                ajax: 'admin/get-list-pendaftar/' + lastPart,
                 columns: [{
                     data: null,
                     render: function(data, type, row, meta) {
@@ -145,7 +145,7 @@
 
         $('#export-excel').click(function(e) {
             e.preventDefault();
-            window.open(`/admin/export-pendaftar/${lastPart}`, "_blank");
+            window.open(`admin/export-pendaftar/${lastPart}`, "_blank");
         });
     </script>
 @endsection
