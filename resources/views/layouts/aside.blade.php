@@ -46,7 +46,7 @@
                 <!--begin::Menu item-->
                 <div class="menu-item">
                     <a class="menu-link {{ isset($path[1]) && $path[1] === 'user' ? 'active' : '' }}"
-                        href="{{ route('admin.user') }}">
+                        href="{{ route('/admin.user') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -65,7 +65,7 @@
                 <!--begin::Menu item-->
                 <div class="menu-item">
                     <a class="menu-link {{ isset($path[1]) && $path[1] === 'event' ? 'active' : '' }}"
-                        href="{{ route('admin.event') }}">
+                        href="{{ route('/admin.event') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -84,7 +84,7 @@
                 <!--begin::Menu item-->
                 <div class="menu-item">
                     <a class="menu-link {{ isset($path[1]) && $path[1] === 'daftarmakassar' ? 'active' : '' }}"
-                        href="{{ route('admin.daftarmakassar') }}">
+                        href="{{ route('/admin.daftarmakassar') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -103,7 +103,7 @@
                 <!--begin::Menu item-->
                 <div class="menu-item">
                     <a class="menu-link {{ isset($path[1]) && $path[1] === 'ipp' ? 'active' : '' }}"
-                        href="{{ route('admin.ipp') }}">
+                        href="{{ route('/admin.ipp') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -123,7 +123,7 @@
                 <!--begin::Menu item-->
                 <div class="menu-item">
                     <a class="menu-link {{ isset($path[1]) && $path[1] === 'proyeksi' ? 'active' : '' }}"
-                        href="{{ route('admin.proyeksi') }}">
+                        href="{{ route('/admin.proyeksi') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
