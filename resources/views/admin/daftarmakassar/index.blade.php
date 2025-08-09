@@ -74,7 +74,7 @@
             let uuid = $(this).attr("data-uuid");
 
             $.ajax({
-                url: `{{ url('/admin/moveup-daftarmakassar/') }}${uuid}`,
+                url: `{{ url('/admin/moveup-daftarmakassar') }}/${uuid}`,
                 type: "GET",
                 success: function(response) {
                     swal
@@ -99,7 +99,7 @@
             let uuid = $(this).attr("data-uuid");
 
             $.ajax({
-                url: `{{ url('/admin/movedown-daftarmakassar/') }}${uuid}`,
+                url: `{{ url('/admin/movedown-daftarmakassar') }}/${uuid}`,
                 type: "GET",
                 success: function(response) {
                     swal
