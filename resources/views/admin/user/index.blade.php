@@ -74,7 +74,7 @@
         let control = new Control();
 
         $(document).on('click', '#button-side-form', function() {
-            window.location.href = '/admin/add-user';
+            window.location.href = "{{ url('admin/add-user') }}";
         })
 
         $(document).on('click', '.button-update', function(e) {
